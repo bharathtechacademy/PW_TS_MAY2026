@@ -75,5 +75,33 @@ console.log(`Password: "${originalString.substring(31, 39)}"`);
 console.log("******Method two: split the text into multiple parts and extract a particular part of the text*****");
 console.log(`Original string: "${originalString}"`);
 let stringParts: string[] = originalString.split(" ");
-console.log(`Username: "${stringParts[3].trim()}"`);
-console.log(`Password: "${stringParts[7].trim()}"`);
+console.log(`Username: "${stringParts[3]!.trim()}"`);
+console.log(`Password: "${stringParts[7]!.trim()}"`);
+
+//13. Methods to Compare two different strings. 
+console.log("******Methods to Compare two different strings*****");
+//== (loose equality) (i.e. It checks only the value of the string.)
+//=== (strict equality) (i.e. It checks both the value and the type of the string.)
+//includes() (i.e. It checks whether a string contains a specific substring or not.)
+//startsWith() (i.e. It checks whether a string starts with a specific substring or not.)
+//endsWith() (i.e. It checks whether a string ends with a specific substring or not.)
+let string1: string | number = "100";
+let string2: string | number = 100;
+console.log(`Using == operator: ${string1 == string2}`); // true
+console.log(`Using === operator: ${string1 === string2}`);// false
+console.log(`Using includes() method: ${originalString.includes("Admin")}`); // true
+console.log(`Using startsWith() method: ${originalString.startsWith(" Username")}`); // true
+console.log(`Using endsWith() method: ${originalString.endsWith("admin123 ")}`); // true
+
+//14. Method to convert string to number/other types and vice versa. 
+console.log("******Method to convert number/other types to String and vice versa*****");
+let std: number = 144;
+let number: number = 234567;
+let stdCode: string = String(std);
+console.log(stdCode + number);
+
+//converting String to other data types 
+let balance: string = "Account balance is $9,999.99."; //Verify whether my account has a minimum balance of $10,000. 
+balance = balance.replace(/[^0-9.]/g, "");
+let bal: number = parseFloat(balance);
+console.log(bal >= 10000);
