@@ -1,4 +1,6 @@
 //Encapsulation in TypeScript => Concept of Hiding the information. 
+// At the same time, when the situation demands, we can share only the required information with the required classes by creating public methods. 
+
 
 //Main Class
 class Person {
@@ -15,14 +17,16 @@ class Person {
     }
 
     //method to get the private data
+    public setAge(age: number) {
+        this.age = age;
+    }
+
+    //method to get the private data
     public getAge() {
         return this.age;
     }
 
-    //method to get the private data
-    public setAge(age: number) {
-        this.age = age;
-    }
+
 }
 
 //Outside Class
