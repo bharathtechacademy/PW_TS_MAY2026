@@ -14,6 +14,28 @@
 
 //Syntax 7: //tagName[@attribute1='value'] [@attribute2='value'] [text()='value']
 
+//Syntax 8: referenceElement/relationship::targetElement
+
+//child
+//parent
+//ancestor
+//following-sibling
+//preceding-sibling
+//following
+//preceding
+// / -> child
+// // -> descendant /with-in-the-family
+
+// target -> sibling -> parent -> ancestor -> grandparent -> great-grandparent
+
+//ancestor: //ul[@class="leftmenu"]
+//parent: //li
+//sibling: NA
+//target : //a[text()="Services"]
+
+//ul[@class="leftmenu"]/child::li/child::a[text()="Services"]
+//ul[@class="leftmenu"]//a[text()="Services"]
+//img[@class="logo"]/ancestor::div[@id="topPanel"]/following-sibling::div[@id="headerPanel"]//a[text()="Services"]
 
 import { test, expect } from '@playwright/test';
 

@@ -148,7 +148,7 @@ employeeDetails.set(1235, "Sarath");
 employeeDetails.set(1234, "Bharath Kumar");
 employeeDetails.set(1236, "Sarath");
 console.log(employeeDetails.size);
-console.log(employeeDetails);
+console.log(employeeDetails.get(1234));
 
 //Date => Date Datatype represents the date and time together at one place.
 let currentDate = new Date();
