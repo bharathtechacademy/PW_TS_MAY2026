@@ -74,3 +74,6 @@ console.log(fruits);
 console.log("******Sort the values within the array******");
 fruits.sort();
 console.log(fruits);
+descending order
+fruits.sort((a,b)=>b-a);
+console.log(fruits);

@@ -52,12 +52,13 @@ console.log(person);
 //5. Deleting a property from the existing object.
 console.log("******Deleting a property from the existing Object*****");
 delete person.visa;
-console.log(person);
+console.log(person); 
 
 //6. Checking if a property exists in the object
 console.log("******Checking if a property exists in the Object*****");
 console.log("visa" in person);
 console.log("salary" in person);
+
 
 // 7. Get all the keys from the object. 
 console.log("******Getting all the keys from the Object*****");
