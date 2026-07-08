@@ -2,7 +2,7 @@
     "cookiesHeader":"div#CybotCookiebotDialogBodyContentTitle",
     "cookiesContent":"div#CybotCookiebotDialogBodyContentText",
     "creatioLogo":"img#CybotCookiebotDialogPoweredbyImage",
-    "cookiebotLogo":"div#CybotCookiebotDialog",
+    "cookiebotLogo":"a#CybotCookiebotDialogPoweredbyCybot",
     "necessarySwitchButton":"input#CybotCookiebotDialogBodyLevelButtonNecessary",
     "preferencesSwitchButton":"input#CybotCookiebotDialogBodyLevelButtonPreferences",
     "statisticsSwitchButton":"input#CybotCookiebotDialogBodyLevelButtonStatistics",

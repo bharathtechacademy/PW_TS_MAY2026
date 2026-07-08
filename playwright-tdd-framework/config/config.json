@@ -12,8 +12,7 @@
         "host":"localhost",
         "port":3306,
         "username":"root",
-        "password":"root",
-
+        "password":"root"
     }, "ollama":{
         "base_url":"http://localhost:11434",
         "model":"llama2-7b-chat",

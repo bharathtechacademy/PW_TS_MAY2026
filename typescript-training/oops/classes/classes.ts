@@ -7,6 +7,9 @@ class Employee {
     empName: string = "John Doe";
     empDept: string = "IT";
 
+    //store constant value
+    static readonly companyName: string = "Google";
+
     //method
     empProjectInfo():void{
         console.log("Employee is working on a Playwright project.");

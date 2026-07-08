@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
+test('has title', async ({ page }, testInfo) => {
+  const testname = testInfo.title;
+  console.log(testname);
   await page.goto('https://playwright.dev/');
   page.screenshot({ path: 'screenshot.png' });
 

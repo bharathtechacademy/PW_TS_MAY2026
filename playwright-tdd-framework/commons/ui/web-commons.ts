@@ -114,9 +114,9 @@ export class WebCommons {
     }
 
     //Method to verify the element is visible 
-    async isElementVisible(locator: string): Promise<boolean> {
+    async isElementVisible(locator: string): Promise<void> {
         const element = await this.element(locator);
-        await expect(element).toBeVisible();
+        await expect(element).toBeVisible({ timeout: 30000 });
     }
 
     //Method to verify element is disappeared 
