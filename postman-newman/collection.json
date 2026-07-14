@@ -1,0 +1,362 @@
+{
+  "info": {
+    "_postman_id": "8a2df3cb-0d79-4889-9935-ed1e889f942a",
+    "name": "GIT API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "31694517",
+    "_collection_link": "https://go.postman.co/collection/31694517-8a2df3cb-0d79-4889-9935-ed1e889f942a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Creating a duplicate repository",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Verify the status code of the duplicate repository request. \r",
+              "pm.test(\"Verify the status code of the duplicate repository request\", function () {\r",
+              "   pm.expect(pm.response.code).to.eql(422);\r",
+              "});\r",
+              "\r",
+              "//Verify status message contains unprocessable entity. \r",
+              "pm.test(\"Verify the status message of the duplicate repository request\", function () {\r",
+              "    pm.expect(pm.response.status).to.include(\"Unprocessable Entity\");\r",
+              "});\r",
+              "\r",
+              "//Verify the response time is less than 2 seconds. \r",
+              "pm.test(\"Response time is less than 2000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "//Verify response body contains the message \"repository creation failed\". \r",
+              "pm.test(\"Verify the error message in the response body\", function () {\r",
+              "    let body = pm.response.json();\r",
+              "    pm.expect(body.message).to.include(\"Repository creation failed.\");\r",
+              "});\r",
+              "\r",
+              "//Verify response body contains the error message \"repository creation failed\". \r",
+              "pm.test(\"Verify the error message in the response body\", function () {\r",
+              "    let body = pm.response.json();\r",
+              "    pm.expect(body.errors[0].message).to.include(\"name already exists on this account\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/vnd.github+json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"JMeterRepo\",\r\n    \"description\":\"Sample Duplicate Repo From Postman\",\r\n    \"private\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/user/repos",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Creating a valid repository",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Verify the status code of the valid repository request. \r",
+              "pm.test(\"Verify the status code of the valid repository request\", function () {\r",
+              "   pm.expect(pm.response.code).to.eql(201);\r",
+              "});\r",
+              "\r",
+              "//Verify status message contains unprocessable entity. \r",
+              "pm.test(\"Verify the status message of the valid repository request\", function () {\r",
+              "    pm.expect(pm.response.status).to.include(\"Created\");\r",
+              "});\r",
+              "\r",
+              "//Verify the response time is less than 2 seconds. \r",
+              "pm.test(\"Response time is less than 2000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "//Verify response body\r",
+              "pm.test(\"Verify the error message in the response body\", function () {\r",
+              "    let body = pm.response.json();\r",
+              "    pm.expect(body.name).to.include(\"JmeterRepo4\");\r",
+              "});\r",
+              "\r",
+              "//Verify response body contains the private true\r",
+              "pm.test(\"Verify the error message in the response body\", function () {\r",
+              "    let body = pm.response.json();\r",
+              "    pm.expect(body.private).to.eql(true);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// pm.environment.set(\"REPO_NAME\", \"JmeterRepo4\"); \r",
+              "pm.globals.set(\"REPO_NAME\", \"JmeterRepo4\"); "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/vnd.github+json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"{{REPO_NAME}}\",\r\n    \"description\":\"Sample Valid Repo From Postman\",\r\n    \"private\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/user/repos",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get the existing repository with valid credentials.",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Verify the status code of the get valid repository request. \r",
+              "pm.test(\"Verify the status code of the valid repository request\", function () {\r",
+              "   pm.expect(pm.response.code).to.eql(200);\r",
+              "});\r",
+              "\r",
+              "//Verify status message\r",
+              "pm.test(\"Verify the status message of the get valid repository request\", function () {\r",
+              "    pm.expect(pm.response.status).to.include(\"OK\");\r",
+              "});\r",
+              "\r",
+              "//Verify the response time is less than 2 seconds. \r",
+              "pm.test(\"Response time is less than 2000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "//Verify response body\r",
+              "pm.test(\"Verify the error message in the response body\", function () {\r",
+              "    let body = pm.response.json();\r",
+              "    pm.expect(body.name).to.include(\"JmeterRepo4\");\r",
+              "});\r",
+              "\r",
+              "//Verify response body contains the private true\r",
+              "pm.test(\"Verify the error message in the response body\", function () {\r",
+              "    let body = pm.response.json();\r",
+              "    pm.expect(body.private).to.eql(true);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/repos/{{OWNER}}/{{REPO_NAME}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "repos",
+            "{{OWNER}}",
+            "{{REPO_NAME}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update the existing repository with valid credentials",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Verify the status code of the get valid repository request. \r",
+              "pm.test(\"Verify the status code of the update valid repository request\", function () {\r",
+              "   pm.expect(pm.response.code).to.eql(200);\r",
+              "});\r",
+              "\r",
+              "//Verify status message\r",
+              "pm.test(\"Verify the status message of the update valid repository request\", function () {\r",
+              "    pm.expect(pm.response.status).to.include(\"OK\");\r",
+              "});\r",
+              "\r",
+              "//Verify the response time is less than 2 seconds. \r",
+              "pm.test(\"Response time is less than 2000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              "\r",
+              "//Verify response body\r",
+              "pm.test(\"Verify the error message in the response body\", function () {\r",
+              "    let body = pm.response.json();\r",
+              "    pm.expect(body.name).to.include(\"JmeterRepo4\");\r",
+              "});\r",
+              "\r",
+              "//Verify response body contains the private false\r",
+              "pm.test(\"Verify the error message in the response body\", function () {\r",
+              "    let body = pm.response.json();\r",
+              "    pm.expect(body.private).to.eql(false);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"private\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/repos/{{OWNER}}/{{REPO_NAME}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "repos",
+            "{{OWNER}}",
+            "{{REPO_NAME}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete the existing repository with valid credentials",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Verify the status code of the delete valid repository request. \r",
+              "pm.test(\"Verify the status code of the delete valid repository request\", function () {\r",
+              "   pm.expect(pm.response.code).to.eql(204);\r",
+              "});\r",
+              "\r",
+              "//Verify status message\r",
+              "pm.test(\"Verify the status message of the delete valid repository request\", function () {\r",
+              "    pm.expect(pm.response.status).to.include(\"No Content\");\r",
+              "});\r",
+              "\r",
+              "//Verify the response time is less than 2 seconds. \r",
+              "pm.test(\"Response time is less than 2000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{TOKEN}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/repos/{{OWNER}}/{{REPO_NAME}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "repos",
+            "{{OWNER}}",
+            "{{REPO_NAME}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
