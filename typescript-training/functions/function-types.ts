@@ -21,7 +21,8 @@ function add(a: number, b: number): number {
 //calling the named function
 console.log(add(5, 3));
 
-//2. Arrow Functions/Lambda Function => The function is declared without any name, and the implementation will be written after a row mark. 
+//2. Arrow Functions/Lambda Function => The function is declared without any name, 
+// and the implementation will be written after a row mark. 
 
 //Syntax:
 // (parameters) => {
