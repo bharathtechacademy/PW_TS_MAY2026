@@ -114,3 +114,25 @@ Right-click on the thread group => Add => Config element => Select the component
 Ex: User-defined variable, HTTP header manager, etc. 
 
 User-defined variable : Default template to maintain the test data when we are sending multiple API requests where we are using common data 
+
+## Samplers in JMeter ?
+Samplers are all about the request that we want to validate with JMETER to understand the performance of our application. 
+
+HTTP request sampler will be used for API performance testing. 
+
+## How to add HTTP Request Sampler ?
+Right-click on the thread group. => Add => Sampler => HTTP request 
+
+
+## Assertions in JMETER ?
+Assertions are all about a set of JMETER methods helping us to validate the API response with respect to the expected result. 
+
+Assertions are very helpful to ensure the correctness of each and every API request. It can catch failure. It is also going to validate the response data. 
+
+## Listeners in JMETER ?
+Listeners are nothing but a set of components in JMeter that can record the test results related to performance metrics. 
+
+View results tree => This listener is going to help us to capture each and every request and response to detail. 
+Summary Report => This listener is going to capture the response time for each and every API request, and also it is going to provide you with the average response time, minimum, and maximum time for each and every individual thread. 
+Assertion Results => Assertion results are all about validating each and every assertion added within the HTTP request. 
+
