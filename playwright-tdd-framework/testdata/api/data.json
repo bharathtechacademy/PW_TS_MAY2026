@@ -1,0 +1,50 @@
+{
+    "duplicateRepoRequest":{
+        "requestType":"post",
+        "endpoint":"/user/repos",
+        "body" :{
+            "name":"JmeterRepo",
+            "description":"Sample Valid Repo From Postman",
+            "private": true
+        },
+        "expCode": 422,
+        "expMessage" : "Unprocessable Entity",
+        "expErrorMessage":"Repository creation failed."
+    },
+    "createValidRepoRequest":{
+        "requestType":"post",
+        "endpoint":"/user/repos",
+        "body" :{
+            "name":"JmeterValidRepo",
+            "description":"Sample Valid Repo From Playwright",
+            "private": true
+        },
+        "expCode": 201,
+        "expMessage" : "Created",
+        "name":"JmeterValidRepo"
+    },
+    "getValidRepoRequest":{
+        "requestType":"get",
+        "endpoint":"/repos/bharathtechacademy05/JmeterValidRepo",
+        "expCode": 200,
+        "expMessage" : "OK",
+        "name":"JmeterValidRepo"
+    },
+    "updateValidRepoRequest":{
+        "requestType":"patch",
+        "endpoint":"/repos/bharathtechacademy05/JmeterValidRepo",
+        "body" :{
+            "private": false
+        },
+        "expCode": 200,
+        "expMessage" : "OK",
+        "name":"JmeterValidRepo",
+        "expPrivate": false
+    },
+    "deleteValidRepoRequest":{
+        "requestType":"delete",
+        "endpoint":"/repos/bharathtechacademy05/JmeterValidRepo",
+        "expCode": 204,
+        "expMessage" : "No Content"
+    }
+}

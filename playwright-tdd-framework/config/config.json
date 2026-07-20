@@ -6,7 +6,9 @@
         "password":"BharathTechAcademy#1234"
     },
     "api":{
-        "base_url":"https://example.com"        
+        "base_url":"https://api.github.com",
+        "owner":"bharathtechacademy05",   
+        "token":"Bearer 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"
 
     },"db":{
         "host":"localhost",
