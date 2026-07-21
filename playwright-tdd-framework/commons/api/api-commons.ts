@@ -1,7 +1,7 @@
 import { test, expect, request } from '@playwright/test';
 import config from '../../config/config.json' with {type: 'json'};
 
-class APICommons {
+export class APICommons {
 
     private requestContext: any; // Pre-requisites of API requests like headers, authorization-related information, etc. 
     private response: any; //Output received from the API request 
@@ -39,6 +39,8 @@ class APICommons {
             default:
                 throw new Error(`Unsupported request type :${requestType}`);
         }
+        //Wait for two seconds before sending the next request. 
+        await new Promise(resolve => setTimeout(resolve,2000));
         return this.response;
     }
 

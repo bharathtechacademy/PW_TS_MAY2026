@@ -2,7 +2,7 @@
     "duplicateRepoRequest":{
         "requestType":"post",
         "endpoint":"/user/repos",
-        "body" :{
+        "payload" :{
             "name":"JmeterRepo",
             "description":"Sample Valid Repo From Postman",
             "private": true
@@ -14,7 +14,7 @@
     "createValidRepoRequest":{
         "requestType":"post",
         "endpoint":"/user/repos",
-        "body" :{
+        "payload" :{
             "name":"JmeterValidRepo",
             "description":"Sample Valid Repo From Playwright",
             "private": true
@@ -27,13 +27,14 @@
         "requestType":"get",
         "endpoint":"/repos/bharathtechacademy05/JmeterValidRepo",
         "expCode": 200,
+        "payload" : "Not Applicable",
         "expMessage" : "OK",
         "name":"JmeterValidRepo"
     },
     "updateValidRepoRequest":{
         "requestType":"patch",
         "endpoint":"/repos/bharathtechacademy05/JmeterValidRepo",
-        "body" :{
+        "payload" :{
             "private": false
         },
         "expCode": 200,
@@ -43,6 +44,7 @@
     },
     "deleteValidRepoRequest":{
         "requestType":"delete",
+        "payload" : "Not Applicable",
         "endpoint":"/repos/bharathtechacademy05/JmeterValidRepo",
         "expCode": 204,
         "expMessage" : "No Content"
