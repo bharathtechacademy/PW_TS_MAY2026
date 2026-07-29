@@ -19,7 +19,7 @@ export class CookiesPageSteps {
      //Method to verify cookies popup content 
      async verifyCookiesPopUpContent(expectedContent: string) {
           await this.web.isElementVisible(cookiePage.cookiesContent);
-          const actualContent: string | null = await this.web.getText(cookiePage.cookiesContent);
+          const actualContent = await this.web.getText(cookiePage.cookiesContent);
           await this.web.verifyValueContains(actualContent, expectedContent);
      }
 

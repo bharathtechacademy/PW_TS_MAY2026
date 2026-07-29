@@ -1,5 +1,6 @@
 import {Browser, BrowserContext, chromium, Page} from '@playwright/test';
 import {Before, After, BeforeAll, AfterAll, setDefaultTimeout} from '@cucumber/cucumber';
+import CustomWorld from './world.ts';
 
 let browser: Browser;
 let context: BrowserContext;
@@ -14,11 +15,12 @@ BeforeAll(async () => {
 });
 
 //Method to create a new browser context and page for each and every test case /test scenario
-Before(async () => {
-    // Create a new browser context (kind of incognito)
+Before(async function (this: CustomWorld) {
     context = await browser.newContext();
-    // Create a new page in the context
     page = await context.newPage();
+    
+    this.page = page; // Assign the page to the world context for use in step definitions
+    this.initializePageObjects(); // Initialize page objects for the current scenario and provide browser details
 });
 
 //Method to close the browser context after executing each and every test case /test scenario

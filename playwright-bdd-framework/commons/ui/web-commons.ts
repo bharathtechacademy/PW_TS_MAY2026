@@ -176,7 +176,7 @@ export class WebCommons {
     } 
 
     //Method to Verify expected value contains actual value. 
-    async verifyValueContains(actualValue: string, expectedValue: string) {
+    async verifyValueContains(actualValue: string | null, expectedValue: string) {
         await expect(actualValue).toContain(expectedValue);
     }
 
