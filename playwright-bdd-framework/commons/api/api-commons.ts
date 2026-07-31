@@ -9,7 +9,7 @@ export class APICommons {
     //Method to Create Request Context  (Meaningful adding base URL headers, authorizations, etc )
     async InitializeRequestContext() {
         this.requestContext = await request.newContext({
-            baseURL: config.api.base_url,
+            baseURL: config.api.base_url,            
             extraHTTPHeaders: {
                 'accept': 'application/vnd.github+json',
                 'Authorization': config.api.token

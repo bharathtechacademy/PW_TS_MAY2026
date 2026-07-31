@@ -1,0 +1,22 @@
+2026-07-21 10:14:17,184 INFO o.a.j.u.JMeterUtils: Setting Locale to en_IN
+2026-07-21 10:14:17,217 INFO o.a.j.JMeter: Loading user properties from: user.properties
+2026-07-21 10:14:17,218 INFO o.a.j.JMeter: Loading system properties from: system.properties
+2026-07-21 10:14:17,231 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-07-21 10:14:17,231 INFO o.a.j.JMeter: Version 5.6.3
+2026-07-21 10:14:17,231 INFO o.a.j.JMeter: java.version=25.0.1
+2026-07-21 10:14:17,231 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2026-07-21 10:14:17,232 INFO o.a.j.JMeter: os.name=Windows 11
+2026-07-21 10:14:17,232 INFO o.a.j.JMeter: os.arch=amd64
+2026-07-21 10:14:17,232 INFO o.a.j.JMeter: os.version=10.0
+2026-07-21 10:14:17,233 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-07-21 10:14:17,233 INFO o.a.j.JMeter: java.awt.headless=null
+2026-07-21 10:14:17,234 INFO o.a.j.JMeter: Max memory     =17087594496
+2026-07-21 10:14:17,234 INFO o.a.j.JMeter: Available Processors =8
+2026-07-21 10:14:17,264 INFO o.a.j.JMeter: Default Locale=English (India)
+2026-07-21 10:14:17,265 INFO o.a.j.JMeter: JMeter  Locale=English (India)
+2026-07-21 10:14:17,265 INFO o.a.j.JMeter: JMeterHome=C:\Training\PlaywrightTrainings\May_2026\playwright-tdd-framework\tests\load\jmeter
+2026-07-21 10:14:17,265 INFO o.a.j.JMeter: user.dir  =C:\Training\PlaywrightTrainings\May_2026\playwright-tdd-framework\tests\load\jmeter\bin
+2026-07-21 10:14:17,266 INFO o.a.j.JMeter: PWD       =C:\Training\PlaywrightTrainings\May_2026\playwright-tdd-framework\tests\load\jmeter\bin
+2026-07-21 10:14:17,268 INFO o.a.j.JMeter: IP: 192.168.88.9 Name: BharathReddy FullName: BharathReddy
+2026-07-21 10:14:17,293 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2026-07-21 10:14:17,633 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: laf:com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel
