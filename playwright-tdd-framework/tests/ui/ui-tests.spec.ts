@@ -64,11 +64,11 @@ test.describe('Creatio CRM UI Tests', () => {
 
     //Test Case 7: Verify cookies pop-up is disappeared after clicking on Allow All button.
     test('Verify cookies pop-up is disappeared after clicking on Allow All button', async () => {
-        await loginPage.launchApplication();
+                    await loginPage.launchApplication();
         await cookiesPage.verifyCookiesPopUpIsDisplayed();
-        await cookiesPage.verifySelectionButtonsDisplayedInCookiesPopUp();
+                  await cookiesPage.verifySelectionButtonsDisplayedInCookiesPopUp();
         await cookiesPage.clickOnSelectionButton('Allow All');
-        await cookiesPage.verifyCookiesPopUpIsDisappeared();
+              await cookiesPage.verifyCookiesPopUpIsDisappeared();
     });
 
     //Test Case 8: Verify show-details link
@@ -123,6 +123,20 @@ test.describe('Creatio CRM UI Tests', () => {
         await homePage.verifyProfileIconAndClick();
         await homePage.clickLogoutButton();
         await loginPage.verifyLoginPageIsDisplayed();
+    });
+
+    //Test Case 12 : Verify user name inside the home page. 
+    test('Verify user name inside the home page', async ({ }, testInfo: TestInfo) => {
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchApplication();
+        await cookiesPage.verifyCookiesPopUpIsDisplayed();
+        await cookiesPage.verifySelectionButtonsDisplayedInCookiesPopUp();
+        await cookiesPage.clickOnSelectionButton('Allow All');
+        await cookiesPage.verifyCookiesPopUpIsDisappeared();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.enterCredentials(testData["username"], testData["password"]);
+        await loginPage.clickLoginButton();
+        await homePage.verifyHomePageDisplayed();
     });
 
 });
