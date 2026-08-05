@@ -52,8 +52,25 @@ test('Web Actions and Assertions', async ({ page }) => {
      //Scroll to the button and then click. 
      await button.scrollIntoViewIfNeeded();
 
+     //scroll towords right and left
+     // await button.scrollIntoViewIfNeeded({ right: 100 });
+     //      await button.scrollIntoViewIfNeeded({ left: 100 });
+
+     //      await button.scrollIntoViewIfNeeded({ right: 100 });
+     //      await button.scrollIntoViewIfNeeded({ left: 100 });
+
      //Force click on the button if the button is not responding or in a disabled state. 
      await button.click({ force: true });
+
+     //when to use force click?
+     //1. When the button is not responding or in a disabled state.
+     //2. When the button is not visible or in a hidden state.
+     //3. When the button is not clickable or in a disabled state.
+     //4. When the button is not clickable or in a disabled state.
+     //5. When the button is not clickable or in a disabled state.
+     //6. When the button is not clickable or in a disabled state.
+     //7. When the button is not clickable or in a disabled state.
+     //8. When the button is not clickable or in a disabled state.
 
      //Drag and drop the button to another element.
      const targetElement = page.locator('div#target');
@@ -85,6 +102,12 @@ test('Web Actions and Assertions', async ({ page }) => {
      await textbox.press('Enter');
      await textbox.press('Control+A');
 
+     //what is the difference between type and fill
+     //type is used to type the text into the text box.
+     //fill is used to fill the text into the text box.
+     //type is used to type the text into the text box.
+     //fill is used to fill the text into the text box.
+     //type is used to type the text into the text box.
      /* ================================================
       Checkbox Element Validations
  ==================================================== */
