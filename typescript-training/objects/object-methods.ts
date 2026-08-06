@@ -97,3 +97,7 @@ let company: companyInfo = {
 }
 let mergedObject = { ...person, ...company };
 console.log(mergedObject);
+
+//what if same key is present in both the objects?
+let mergedObject2 = { ...person, ...company };
+console.log(mergedObject2);

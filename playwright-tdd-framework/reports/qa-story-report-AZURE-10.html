@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA Analysis Report — Azure US #10</title>
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-light: #e8f0fe;
+      --secondary: #7e3af2;
+      --success: #057a55;
+      --success-light: #def7ec;
+      --warning: #c27803;
+      --warning-light: #fdf6b2;
+      --danger: #c81e1e;
+      --danger-light: #fde8e8;
+      --info: #0369a1;
+      --info-light: #e0f2fe;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-600: #4b5563;
+      --gray-800: #1f2937;
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: #f0f4f8;
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a56db 0%, #7e3af2 100%);
+      color: #fff;
+      padding: 36px 48px;
+    }
+    header .badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+    header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    header p  { opacity: .88; font-size: .95rem; }
+    .meta-row { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 20px; font-size: .87rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-item span:first-child { opacity: .7; text-transform: uppercase; letter-spacing: .05em; font-size: .75rem; }
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px; border-radius: 20px; font-size: .78rem; font-weight: 600;
+    }
+    .badge-blue   { background: #dbeafe; color: #1e40af; }
+    .badge-purple { background: #ede9fe; color: #5b21b6; }
+    .badge-green  { background: var(--success-light); color: var(--success); }
+    .badge-yellow { background: var(--warning-light); color: var(--warning); }
+    .badge-red    { background: var(--danger-light);  color: var(--danger); }
+    .badge-orange { background: #fff7ed; color: #c2410c; }
+    .badge-gray   { background: var(--gray-100); color: var(--gray-600); }
+    .badge-white  { background: rgba(255,255,255,.25); color: #fff; }
+
+    /* ── Layout ── */
+    main { max-width: 1200px; margin: 0 auto; padding: 36px 24px; }
+    .section { background: #fff; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.08); margin-bottom: 28px; overflow: hidden; }
+    .section-header {
+      padding: 18px 28px; border-bottom: 1px solid var(--gray-200);
+      background: var(--gray-50); display: flex; align-items: center; gap: 12px;
+    }
+    .section-icon { font-size: 1.3rem; }
+    .section-title { font-size: 1.1rem; font-weight: 700; color: var(--gray-800); }
+    .section-body { padding: 28px; }
+
+    /* ── Story Details ── */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width:700px){ .story-grid { grid-template-columns: 1fr; } }
+    .story-field label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--gray-600); font-weight: 600; display: block; margin-bottom: 4px; }
+    .story-field .val { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: 10px 14px; font-size: .9rem; }
+    .story-full { grid-column: 1 / -1; }
+
+    /* ── Req cards ── */
+    .req-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 18px; }
+    .req-card { border-radius: 10px; padding: 18px; border-left: 5px solid; }
+    .req-card.functional  { border-color: var(--primary); background: var(--primary-light); }
+    .req-card.nonfunc     { border-color: var(--secondary); background: #f5f3ff; }
+    .req-card.data        { border-color: var(--success); background: var(--success-light); }
+    .req-card.security    { border-color: var(--danger); background: var(--danger-light); }
+    .req-card h4 { font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 10px; }
+    .req-card ul { padding-left: 18px; font-size: .88rem; }
+    .req-card ul li { margin-bottom: 6px; }
+
+    /* ── AC list ── */
+    .ac-list { list-style: none; }
+    .ac-list li { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--gray-200); align-items: flex-start; }
+    .ac-list li:last-child { border-bottom: none; }
+    .ac-id { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; font-size: .85rem; display: flex; align-items: center; justify-content: center; }
+    .ac-text { font-size: .9rem; }
+
+    /* ── Scenario table ── */
+    .scenario-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+    .scenario-table th { background: var(--gray-800); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+    .scenario-table td { padding: 10px 14px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+    .scenario-table tr:nth-child(even) td { background: var(--gray-50); }
+    .scenario-table tr:hover td { background: var(--primary-light); }
+    .prio-high   { color: var(--danger); font-weight: 700; }
+    .prio-medium { color: var(--warning); font-weight: 700; }
+    .prio-low    { color: var(--success); font-weight: 700; }
+
+    /* ── Risk table ── */
+    .risk-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+    .risk-table th { background: #7e3af2; color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+    .risk-table td { padding: 10px 14px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+    .risk-table tr:nth-child(even) td { background: #faf5ff; }
+    .sev-critical { background: var(--danger); color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: .78rem; }
+    .sev-high     { background: #f97316; color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: .78rem; }
+    .sev-medium   { background: #eab308; color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: .78rem; }
+    .sev-low      { background: var(--success); color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: .78rem; }
+
+    /* ── Effort ── */
+    .effort-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; }
+    .effort-card { border-radius: 10px; padding: 18px 22px; text-align: center; background: linear-gradient(135deg, var(--primary-light), #fff); border: 1px solid var(--gray-200); }
+    .effort-card .eff-value { font-size: 2rem; font-weight: 800; color: var(--primary); }
+    .effort-card .eff-label { font-size: .82rem; color: var(--gray-600); margin-top: 4px; }
+    .estimate-summary { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px; }
+    .est-box { flex: 1; min-width: 160px; border-radius: 10px; padding: 18px; text-align: center; }
+    .est-box.best     { background: var(--success-light); border: 1px solid #a7f3d0; }
+    .est-box.expected { background: var(--warning-light); border: 1px solid #fde68a; }
+    .est-box.worst    { background: var(--danger-light);  border: 1px solid #fca5a5; }
+    .est-box .est-val { font-size: 1.8rem; font-weight: 800; }
+    .est-box .est-lbl { font-size: .82rem; margin-top: 4px; font-weight: 600; }
+
+    /* ── Recommendations ── */
+    .rec-list { list-style: none; }
+    .rec-list li { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px dashed var(--gray-200); }
+    .rec-list li:last-child { border-bottom: none; }
+    .rec-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    /* ── Footer ── */
+    footer { text-align: center; padding: 28px; font-size: .82rem; color: var(--gray-600); }
+
+    /* ── Confidence bar ── */
+    .conf-bar-wrap { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+    .conf-bar { height: 10px; border-radius: 5px; background: var(--gray-200); flex: 1; overflow: hidden; }
+    .conf-fill { height: 100%; border-radius: 5px; background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+    .conf-pct { font-weight: 700; font-size: .88rem; color: var(--primary); }
+
+    table { border-radius: 8px; overflow: hidden; }
+    .section-sub { font-size: .82rem; color: var(--gray-600); margin-left: auto; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header>
+  <div class="badge-row">
+    <span class="badge badge-white">📋 Azure DevOps</span>
+    <span class="badge badge-white">🆔 US #10</span>
+    <span class="badge badge-white">🏃 Sprint 1</span>
+    <span class="badge badge-white">📦 Creatio CRM</span>
+  </div>
+  <h1>Login Form Validations for Basic Login with User Credentials</h1>
+  <p>Comprehensive QA Requirements Analysis &amp; Test Strategy Report</p>
+  <div class="meta-row">
+    <div class="meta-item"><span>Story Type</span><span>User Story</span></div>
+    <div class="meta-item"><span>State</span><span>New</span></div>
+    <div class="meta-item"><span>Priority</span><span>2 — High</span></div>
+    <div class="meta-item"><span>Story Points</span><span>5</span></div>
+    <div class="meta-item"><span>Reporter</span><span>Bharath Tech Academy</span></div>
+    <div class="meta-item"><span>Iteration</span><span>Creatio CRM › Sprint 1</span></div>
+    <div class="meta-item"><span>Generated</span><span>2026-08-06</span></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ════════════════ EXECUTIVE SUMMARY ════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-title">Executive Summary</span>
+    </div>
+    <div class="section-body">
+      <p style="font-size:.95rem; margin-bottom:16px;">
+        User Story <strong>#10</strong> covers <strong>login form validation</strong> for the Creatio CRM application.
+        The story focuses on client-side and server-side error messaging for the authentication form — specifically
+        invalid email format, email length boundary (400 chars), password length boundary (100 chars), and combined
+        invalid-credentials feedback. This is a <strong>high-priority</strong> security and usability story that
+        directly affects first-impression UX and authentication security posture.
+      </p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:140px; background:#e8f0fe; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:2rem; font-weight:800; color:#1a56db;">27</div>
+          <div style="font-size:.82rem; color:#4b5563; margin-top:4px;">Total QA Scenarios</div>
+        </div>
+        <div style="flex:1; min-width:140px; background:#def7ec; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:2rem; font-weight:800; color:#057a55;">4</div>
+          <div style="font-size:.82rem; color:#4b5563; margin-top:4px;">Acceptance Criteria</div>
+        </div>
+        <div style="flex:1; min-width:140px; background:#fde8e8; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:2rem; font-weight:800; color:#c81e1e;">3</div>
+          <div style="font-size:.82rem; color:#4b5563; margin-top:4px;">High Risks</div>
+        </div>
+        <div style="flex:1; min-width:140px; background:#fdf6b2; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:2rem; font-weight:800; color:#c27803;">~17 hrs</div>
+          <div style="font-size:.82rem; color:#4b5563; margin-top:4px;">Estimated QA Effort</div>
+        </div>
+        <div style="flex:1; min-width:140px; background:#f5f3ff; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:2rem; font-weight:800; color:#7e3af2;">85%</div>
+          <div style="font-size:.82rem; color:#4b5563; margin-top:4px;">Estimation Confidence</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ USER STORY DETAILS ════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📖</span>
+      <span class="section-title">User Story Details</span>
+    </div>
+    <div class="section-body">
+      <div class="story-grid">
+        <div class="story-field"><label>Story ID</label><div class="val">AB#10</div></div>
+        <div class="story-field"><label>Work Item Type</label><div class="val">User Story</div></div>
+        <div class="story-field"><label>State</label><div class="val"><span class="badge badge-blue">New</span></div></div>
+        <div class="story-field"><label>Priority</label><div class="val"><span class="badge badge-red">2 — High</span></div></div>
+        <div class="story-field"><label>Story Points</label><div class="val">5</div></div>
+        <div class="story-field"><label>Sprint / Iteration</label><div class="val">Creatio CRM › Sprint 1</div></div>
+        <div class="story-field"><label>Reporter</label><div class="val">Bharath Tech Academy</div></div>
+        <div class="story-field"><label>Assignee</label><div class="val"><span class="badge badge-gray">Unassigned</span></div></div>
+
+        <div class="story-field story-full">
+          <label>Description</label>
+          <div class="val">
+            As an <strong>existing user</strong>, I want to log in to my Creatio CRM account using my
+            <strong>business email and password</strong> through a secure and well-designed form and get
+            clear error messages when I enter invalid credentials.
+          </div>
+        </div>
+
+        <div class="story-field story-full">
+          <label>Acceptance Criteria</label>
+          <ul class="ac-list">
+            <li>
+              <div class="ac-id">AC1</div>
+              <div class="ac-text">
+                <strong>Email — Invalid format &amp; domain:</strong> Business Email field shall be highlighted
+                with <span style="color:red;">red</span> and display
+                <em>"Invalid email format"</em> error when the user enters an invalid email format or domain name.
+              </div>
+            </li>
+            <li>
+              <div class="ac-id">AC2</div>
+              <div class="ac-text">
+                <strong>Email — Exceeds 400 characters:</strong> Business Email field shall be highlighted with
+                <span style="color:red;">red</span> and display
+                <em>"Invalid email format"</em> error when the user enters an email longer than 400 characters.
+              </div>
+            </li>
+            <li>
+              <div class="ac-id">AC3</div>
+              <div class="ac-text">
+                <strong>Password — Exceeds 100 characters:</strong> Password field shall be highlighted with
+                <span style="color:red;">red</span> and display
+                <em>"Invalid value. Value must contain up to 100 characters"</em> when the user enters a password
+                exceeding 100 characters.
+              </div>
+            </li>
+            <li>
+              <div class="ac-id">AC4</div>
+              <div class="ac-text">
+                <strong>Invalid credentials:</strong>
+                <em>"Invalid email or password"</em> error shall be displayed at the <strong>bottom of the page</strong>
+                when the user enters an incorrect username/password combination and attempts login.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ REQUIREMENT BREAKDOWN ════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔍</span>
+      <span class="section-title">Requirement Breakdown</span>
+    </div>
+    <div class="section-body">
+      <div class="req-grid">
+        <div class="req-card functional">
+          <h4>⚙️ Functional Requirements</h4>
+          <ul>
+            <li>Login form with Business Email and Password fields</li>
+            <li>Inline field-level validation on email format (regex)</li>
+            <li>Inline field-level validation on email length (&gt; 400 chars)</li>
+            <li>Inline field-level validation on password length (&gt; 100 chars)</li>
+            <li>Server-side authentication error at bottom of page</li>
+            <li>Red highlight on invalid fields</li>
+            <li>Specific, distinct error messages per validation rule</li>
+          </ul>
+        </div>
+        <div class="req-card nonfunc">
+          <h4>🚀 Non-Functional Requirements</h4>
+          <ul>
+            <li>Validation must be real-time / on-blur (UX expectation)</li>
+            <li>Error messages must be visually accessible (WCAG AA contrast)</li>
+            <li>Login response time &lt; 2s under normal load</li>
+            <li>Error messages must not leak implementation details</li>
+            <li>Form must be keyboard-navigable</li>
+          </ul>
+        </div>
+        <div class="req-card data">
+          <h4>📐 Data &amp; Validation Rules</h4>
+          <ul>
+            <li>Email max length: 400 chars (AC2)</li>
+            <li>Password max length: 100 chars (AC3)</li>
+            <li>Email format: RFC 5321 compliant + domain validation</li>
+            <li>Boundary values: exactly 400, exactly 401 chars for email</li>
+            <li>Boundary values: exactly 100, exactly 101 chars for password</li>
+            <li>Empty fields: behavior not specified — open question</li>
+          </ul>
+        </div>
+        <div class="req-card security">
+          <h4>🔒 Security Considerations</h4>
+          <ul>
+            <li>Generic "Invalid email or password" prevents user enumeration</li>
+            <li>No password content should be revealed in error messages</li>
+            <li>Login attempt rate limiting (not covered in AC — gap)</li>
+            <li>HTTPS enforcement for credential transmission</li>
+            <li>No sensitive data in client-side error responses</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:24px; background:#fff7ed; border-radius:10px; padding:18px; border-left:4px solid #f97316;">
+        <strong>⚠️ Open Questions / Gaps</strong>
+        <ul style="margin-top:10px; padding-left:20px; font-size:.88rem; line-height:1.8;">
+          <li>Are validations triggered <em>on blur</em>, <em>on submit</em>, or <em>on keypress</em>?</li>
+          <li>What error is shown for <strong>empty</strong> email or password fields?</li>
+          <li>Is there a <strong>CAPTCHA</strong> or lockout after N failed attempts?</li>
+          <li>Does the 400-char email limit apply before or after UI paste normalization?</li>
+          <li>What is the expected behavior when <strong>both</strong> fields are invalid simultaneously?</li>
+          <li>Is "remember me" / SSO in scope for this story?</li>
+          <li>Should the red highlight persist after error is corrected in real time?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ QA SCENARIO MATRIX ════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧪</span>
+      <span class="section-title">QA Scenario Matrix</span>
+      <span class="section-sub">27 scenarios across 7 categories</span>
+    </div>
+    <div class="section-body" style="overflow-x:auto;">
+      <table class="scenario-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Scenario ID</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Input Data</th>
+            <th>Expected Result</th>
+            <th>AC Ref</th>
+            <th>Priority</th>
+            <th>Automation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- POSITIVE -->
+          <tr><td>1</td><td>TC-POS-001</td><td><span class="badge badge-green">Positive</span></td>
+            <td>Valid login with correct email and password</td>
+            <td>user@company.com / ValidPass123</td>
+            <td>User is authenticated and redirected to CRM dashboard</td>
+            <td>—</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>2</td><td>TC-POS-002</td><td><span class="badge badge-green">Positive</span></td>
+            <td>Valid email exactly 400 characters (boundary pass)</td>
+            <td>Email = 400 chars with valid format</td>
+            <td>No validation error; form submits if password valid</td>
+            <td>AC2</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>3</td><td>TC-POS-003</td><td><span class="badge badge-green">Positive</span></td>
+            <td>Valid password exactly 100 characters (boundary pass)</td>
+            <td>Password = 100 chars</td>
+            <td>No validation error; form submits if email valid</td>
+            <td>AC3</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+
+          <!-- NEGATIVE — EMAIL -->
+          <tr><td>4</td><td>TC-NEG-001</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Email missing @ symbol</td>
+            <td>userdomain.com</td>
+            <td>Email field highlighted red; "Invalid email format" shown</td>
+            <td>AC1</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>5</td><td>TC-NEG-002</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Email missing domain extension</td>
+            <td>user@company</td>
+            <td>Email field highlighted red; "Invalid email format" shown</td>
+            <td>AC1</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>6</td><td>TC-NEG-003</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Email with invalid domain (special chars in domain)</td>
+            <td>user@comp!any.com</td>
+            <td>Email field highlighted red; "Invalid email format" shown</td>
+            <td>AC1</td><td class="prio-medium">Medium</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>7</td><td>TC-NEG-004</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Email with consecutive dots</td>
+            <td>user..name@company.com</td>
+            <td>Email field highlighted red; "Invalid email format" shown</td>
+            <td>AC1</td><td class="prio-medium">Medium</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>8</td><td>TC-NEG-005</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Email with spaces</td>
+            <td>user name@company.com</td>
+            <td>Email field highlighted red; "Invalid email format" shown</td>
+            <td>AC1</td><td class="prio-medium">Medium</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>9</td><td>TC-NEG-006</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Plain text (no email format)</td>
+            <td>justplaintext</td>
+            <td>Email field highlighted red; "Invalid email format" shown</td>
+            <td>AC1</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+
+          <!-- BOUNDARY — EMAIL LENGTH -->
+          <tr><td>10</td><td>TC-BND-001</td><td><span class="badge badge-purple">Boundary</span></td>
+            <td>Email exactly 401 characters (one over limit)</td>
+            <td>Email = 401 chars with valid format structure</td>
+            <td>Email field highlighted red; "Invalid email format" shown</td>
+            <td>AC2</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>11</td><td>TC-BND-002</td><td><span class="badge badge-purple">Boundary</span></td>
+            <td>Email exactly 400 characters (at limit)</td>
+            <td>Email = 400 chars with valid format structure</td>
+            <td>No error; field accepted</td>
+            <td>AC2</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>12</td><td>TC-BND-003</td><td><span class="badge badge-purple">Boundary</span></td>
+            <td>Email with very long local part (399 chars local + @a.co = ~404)</td>
+            <td>399 char local part + @a.co</td>
+            <td>Email field highlighted red; "Invalid email format" shown</td>
+            <td>AC2</td><td class="prio-medium">Medium</td><td><span class="badge badge-blue">Automate</span></td></tr>
+
+          <!-- BOUNDARY — PASSWORD LENGTH -->
+          <tr><td>13</td><td>TC-BND-004</td><td><span class="badge badge-purple">Boundary</span></td>
+            <td>Password exactly 101 characters (one over limit)</td>
+            <td>Password = 101 chars</td>
+            <td>Password field highlighted red; "Invalid value. Value must contain up to 100 characters"</td>
+            <td>AC3</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>14</td><td>TC-BND-005</td><td><span class="badge badge-purple">Boundary</span></td>
+            <td>Password exactly 100 characters (at limit)</td>
+            <td>Password = 100 chars</td>
+            <td>No password validation error</td>
+            <td>AC3</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>15</td><td>TC-BND-006</td><td><span class="badge badge-purple">Boundary</span></td>
+            <td>Password very long (500 chars)</td>
+            <td>Password = 500 chars</td>
+            <td>Password field highlighted red; length error displayed</td>
+            <td>AC3</td><td class="prio-medium">Medium</td><td><span class="badge badge-blue">Automate</span></td></tr>
+
+          <!-- INVALID CREDENTIALS -->
+          <tr><td>16</td><td>TC-NEG-007</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Valid email format but wrong password (user exists)</td>
+            <td>validuser@company.com / WrongPass</td>
+            <td>"Invalid email or password" shown at bottom of page; no redirect</td>
+            <td>AC4</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>17</td><td>TC-NEG-008</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Valid email format but non-existent user</td>
+            <td>notexist@company.com / AnyPass</td>
+            <td>"Invalid email or password" shown at bottom; no user enumeration</td>
+            <td>AC4</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+          <tr><td>18</td><td>TC-NEG-009</td><td><span class="badge badge-red">Negative</span></td>
+            <td>Correct email, correct password but account is disabled/locked</td>
+            <td>locked@company.com / CorrectPass</td>
+            <td>Appropriate error (investigate expected message for locked accounts)</td>
+            <td>AC4</td><td class="prio-medium">Medium</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+
+          <!-- ERROR HANDLING -->
+          <tr><td>19</td><td>TC-ERR-001</td><td><span class="badge badge-orange">Error Handling</span></td>
+            <td>Submit form with both fields empty</td>
+            <td>Empty email + empty password</td>
+            <td>Validation errors shown (empty field handling — gap)</td>
+            <td>—</td><td class="prio-high">High</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+          <tr><td>20</td><td>TC-ERR-002</td><td><span class="badge badge-orange">Error Handling</span></td>
+            <td>Submit form with only email filled</td>
+            <td>Valid email + empty password</td>
+            <td>Password field error shown; email field no error</td>
+            <td>—</td><td class="prio-medium">Medium</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+          <tr><td>21</td><td>TC-ERR-003</td><td><span class="badge badge-orange">Error Handling</span></td>
+            <td>Network failure during login submission</td>
+            <td>Valid credentials; network off</td>
+            <td>User-friendly network error; no crash</td>
+            <td>—</td><td class="prio-medium">Medium</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+
+          <!-- SECURITY -->
+          <tr><td>22</td><td>TC-SEC-001</td><td><span class="badge badge-red">Security</span></td>
+            <td>SQL injection in email field</td>
+            <td>' OR 1=1;--</td>
+            <td>Input sanitized; "Invalid email format" shown; no DB error</td>
+            <td>AC1</td><td class="prio-high">High</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+          <tr><td>23</td><td>TC-SEC-002</td><td><span class="badge badge-red">Security</span></td>
+            <td>XSS payload in email field</td>
+            <td>&lt;script&gt;alert(1)&lt;/script&gt;@test.com</td>
+            <td>Payload rendered as plain text; no script execution</td>
+            <td>AC1</td><td class="prio-high">High</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+          <tr><td>24</td><td>TC-SEC-003</td><td><span class="badge badge-red">Security</span></td>
+            <td>Password field value not visible / masked</td>
+            <td>Type any password</td>
+            <td>Password masked with bullets; no plain text visible</td>
+            <td>—</td><td class="prio-high">High</td><td><span class="badge badge-blue">Automate</span></td></tr>
+
+          <!-- ACCESSIBILITY / UI -->
+          <tr><td>25</td><td>TC-UI-001</td><td><span class="badge badge-blue">UI / A11y</span></td>
+            <td>Error messages readable by screen readers (aria-live)</td>
+            <td>Trigger any validation error</td>
+            <td>ARIA role or live region announces error</td>
+            <td>—</td><td class="prio-medium">Medium</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+          <tr><td>26</td><td>TC-UI-002</td><td><span class="badge badge-blue">UI / A11y</span></td>
+            <td>Keyboard-only login flow (Tab + Enter)</td>
+            <td>Navigate via keyboard; submit form</td>
+            <td>All interactions achievable without mouse</td>
+            <td>—</td><td class="prio-medium">Medium</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+          <tr><td>27</td><td>TC-UI-003</td><td><span class="badge badge-blue">UI / A11y</span></td>
+            <td>Error color contrast ratio meets WCAG 2.1 AA (4.5:1)</td>
+            <td>Red highlight + error text</td>
+            <td>Contrast ratio ≥ 4.5:1 for error text</td>
+            <td>—</td><td class="prio-low">Low</td><td><span class="badge badge-yellow">Manual</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════════════ RISKS & ASSUMPTIONS ════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚠️</span>
+      <span class="section-title">Risks &amp; Assumptions Register</span>
+    </div>
+    <div class="section-body" style="overflow-x:auto;">
+      <table class="risk-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Risk / Assumption</th>
+            <th>Type</th>
+            <th>Severity</th>
+            <th>Probability</th>
+            <th>Impact</th>
+            <th>Mitigation / Validation Action</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>R1</td>
+            <td>Empty field validation behavior is not specified in ACs — could result in missing test coverage or incorrect pass/fail verdicts</td>
+            <td><span class="badge badge-red">Risk</span></td>
+            <td><span class="sev-high">High</span></td>
+            <td>High</td>
+            <td>Incomplete test suite; defects missed</td>
+            <td>Raise clarification with PO before test design; add explicit AC for empty fields</td>
+            <td>QA Lead / PO</td>
+          </tr>
+          <tr>
+            <td>R2</td>
+            <td>Validation trigger timing (on blur vs on submit) not defined — tests may pass in one mode and fail in another</td>
+            <td><span class="badge badge-red">Risk</span></td>
+            <td><span class="sev-high">High</span></td>
+            <td>Medium</td>
+            <td>Incorrect UX behavior; test flakiness</td>
+            <td>Confirm with dev team during sprint kickoff; align tests to agreed trigger</td>
+            <td>QA + Dev</td>
+          </tr>
+          <tr>
+            <td>R3</td>
+            <td>No rate-limiting or CAPTCHA specified — brute-force attacks possible on the login endpoint</td>
+            <td><span class="badge badge-red">Risk</span></td>
+            <td><span class="sev-critical">Critical</span></td>
+            <td>High</td>
+            <td>Security vulnerability; account compromise</td>
+            <td>Escalate to security team; add AC for lockout policy; pen-test login endpoint</td>
+            <td>Security / PO</td>
+          </tr>
+          <tr>
+            <td>R4</td>
+            <td>400-char email boundary may be validated server-side only — UI may not prevent longer input</td>
+            <td><span class="badge badge-red">Risk</span></td>
+            <td><span class="sev-medium">Medium</span></td>
+            <td>Medium</td>
+            <td>Boundary tests pass on UI but fail on API layer</td>
+            <td>Test both UI and API boundaries independently; align maxlength attribute</td>
+            <td>QA</td>
+          </tr>
+          <tr>
+            <td>R5</td>
+            <td>Pasted content (clipboard) may bypass character-count validation in some browsers</td>
+            <td><span class="badge badge-red">Risk</span></td>
+            <td><span class="sev-medium">Medium</span></td>
+            <td>Low</td>
+            <td>Boundary validation circumvented by paste</td>
+            <td>Test paste scenarios explicitly in Chromium, Firefox, WebKit</td>
+            <td>QA</td>
+          </tr>
+          <tr>
+            <td>A1</td>
+            <td>Test environment has valid user accounts seeded (for positive login and invalid-password tests)</td>
+            <td><span class="badge badge-yellow">Assumption</span></td>
+            <td><span class="sev-medium">Medium</span></td>
+            <td>Medium</td>
+            <td>Blocked test execution if accounts unavailable</td>
+            <td>Confirm test data with DevOps; request seeded accounts before sprint test phase</td>
+            <td>QA + DevOps</td>
+          </tr>
+          <tr>
+            <td>A2</td>
+            <td>The login form targets Creatio CRM web (not mobile app) — cross-browser but single platform</td>
+            <td><span class="badge badge-yellow">Assumption</span></td>
+            <td><span class="sev-low">Low</span></td>
+            <td>Low</td>
+            <td>Missed mobile/responsive defects</td>
+            <td>Confirm scope with PO; if mobile is in scope, add responsive test scenarios</td>
+            <td>PO</td>
+          </tr>
+          <tr>
+            <td>A3</td>
+            <td>The error message strings are final as written in ACs — no localisation/i18n variants expected</td>
+            <td><span class="badge badge-yellow">Assumption</span></td>
+            <td><span class="sev-low">Low</span></td>
+            <td>Low</td>
+            <td>Hardcoded strings in tests break on localised builds</td>
+            <td>Check if i18n is required; use dynamic message keys if so</td>
+            <td>QA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════════════ EFFORT & ESTIMATION ════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⏱️</span>
+      <span class="section-title">Effort &amp; Estimation Summary</span>
+    </div>
+    <div class="section-body">
+      <div class="effort-grid">
+        <div class="effort-card">
+          <div class="eff-value">3h</div>
+          <div class="eff-label">Test Design &amp; Scenario Writing</div>
+        </div>
+        <div class="effort-card">
+          <div class="eff-value">5h</div>
+          <div class="eff-label">Test Automation (Playwright)</div>
+        </div>
+        <div class="effort-card">
+          <div class="eff-value">2h</div>
+          <div class="eff-label">Test Data Preparation</div>
+        </div>
+        <div class="effort-card">
+          <div class="eff-value">1h</div>
+          <div class="eff-label">Environment Setup &amp; Validation</div>
+        </div>
+        <div class="effort-card">
+          <div class="eff-value">4h</div>
+          <div class="eff-label">Manual Execution (security, a11y)</div>
+        </div>
+        <div class="effort-card">
+          <div class="eff-value">2h</div>
+          <div class="eff-label">Defect Triage &amp; Reporting</div>
+        </div>
+      </div>
+
+      <div class="estimate-summary">
+        <div class="est-box best">
+          <div class="est-val" style="color:#057a55;">12h</div>
+          <div class="est-lbl" style="color:#057a55;">Best Case</div>
+          <div style="font-size:.78rem; margin-top:6px; color:#4b5563;">No blockers; all ACs clear; environment ready</div>
+        </div>
+        <div class="est-box expected">
+          <div class="est-val" style="color:#c27803;">17h</div>
+          <div class="est-lbl" style="color:#c27803;">Expected</div>
+          <div style="font-size:.78rem; margin-top:6px; color:#4b5563;">Some clarification needed; minor defects to triage</div>
+        </div>
+        <div class="est-box worst">
+          <div class="est-val" style="color:#c81e1e;">24h</div>
+          <div class="est-lbl" style="color:#c81e1e;">Worst Case</div>
+          <div style="font-size:.78rem; margin-top:6px; color:#4b5563;">Missing ACs; environment issues; security escalation</div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <strong>Estimation Confidence</strong>
+        <div class="conf-bar-wrap">
+          <div class="conf-bar"><div class="conf-fill" style="width:85%;"></div></div>
+          <span class="conf-pct">85%</span>
+        </div>
+        <p style="font-size:.85rem; color:#4b5563; margin-top:8px;">
+          <strong>Key drivers:</strong> Well-defined boundary conditions in ACs; standard form validation patterns;
+          confidence reduces due to missing empty-field AC and unconfirmed validation trigger timing.
+          Automation effort assumes existing Playwright framework and page-object model in place.
+        </p>
+      </div>
+
+      <div style="margin-top:18px; background:#e8f0fe; border-radius:8px; padding:16px;">
+        <strong>📌 Automation Recommendation:</strong>
+        <p style="font-size:.87rem; margin-top:6px;">
+          18 of 27 scenarios (67%) are suitable for Playwright automation, primarily boundary tests (TC-BND-*),
+          negative format tests (TC-NEG-001 to 006), and happy-path (TC-POS-*). Security and accessibility
+          scenarios (9 total) should remain manual or use dedicated tooling (axe-core for a11y, OWASP ZAP for security).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ RECOMMENDATIONS ════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">💡</span>
+      <span class="section-title">Recommendations &amp; Next Steps</span>
+    </div>
+    <div class="section-body">
+      <ul class="rec-list">
+        <li>
+          <span class="rec-icon">🔴</span>
+          <div>
+            <strong>[Blocker — Before Dev Starts]</strong> Raise AC for empty field behavior on both Email and Password.
+            This is required for complete test coverage and must be resolved in sprint planning or story refinement.
+          </div>
+        </li>
+        <li>
+          <span class="rec-icon">🔴</span>
+          <div>
+            <strong>[Security — Critical Gap]</strong> Escalate the missing rate-limiting/lockout requirement to the
+            security team. Login endpoints without brute-force protection are a critical OWASP A07 risk.
+          </div>
+        </li>
+        <li>
+          <span class="rec-icon">🟡</span>
+          <div>
+            <strong>[Clarification — High]</strong> Confirm with the dev team whether validations fire
+            <em>on blur</em> or <em>on form submit</em>. This determines test execution sequence for all TC-NEG-* and TC-BND-* cases.
+          </div>
+        </li>
+        <li>
+          <span class="rec-icon">🟡</span>
+          <div>
+            <strong>[Test Data]</strong> Pre-seed the test environment with at least 2 known valid accounts and
+            1 locked account before test execution begins. Coordinate with DevOps in the first week of Sprint 1.
+          </div>
+        </li>
+        <li>
+          <span class="rec-icon">🟢</span>
+          <div>
+            <strong>[Automation — Sprint 1]</strong> Prioritize automation of boundary tests (TC-BND-001 to 006)
+            and primary negative flows (TC-NEG-001, 004, 005, 007, 008) using the existing Playwright page-object model.
+            These are regression-critical and fast to automate given the framework already exists.
+          </div>
+        </li>
+        <li>
+          <span class="rec-icon">🟢</span>
+          <div>
+            <strong>[Regression]</strong> This login form is a gateway feature. Any changes to authentication in
+            future sprints must re-run the full TC-POS-*, TC-NEG-*, and TC-BND-* suites. Consider tagging these
+            scenarios as <code>@smoke</code> and <code>@regression</code> in Playwright.
+          </div>
+        </li>
+        <li>
+          <span class="rec-icon">🔵</span>
+          <div>
+            <strong>[Accessibility]</strong> Run axe-core scan against the login form post-implementation.
+            Ensure all error messages use <code>role="alert"</code> or <code>aria-live="polite"</code> for
+            screen-reader compatibility (WCAG 2.1 SC 4.1.3).
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>QA Analysis Report &nbsp;|&nbsp; Azure DevOps User Story #10 &nbsp;|&nbsp; Project: Creatio CRM &nbsp;|&nbsp; Sprint 1</p>
+  <p style="margin-top:6px;">Generated by GitHub Copilot QA Analyst Agent &nbsp;•&nbsp; 2026-08-06 &nbsp;•&nbsp; Tracker: <strong>Azure DevOps</strong> — bharattechacademy3</p>
+</footer>
+
+</body>
+</html>
