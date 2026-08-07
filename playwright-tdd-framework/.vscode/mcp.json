@@ -1,8 +1,10 @@
 {
-	"servers": {
-		"playwright": {
-			"command": "npx",
-			"args": ["@playwright/mcp@latest"]
-		}
-	}
+  "servers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
+  }
 }

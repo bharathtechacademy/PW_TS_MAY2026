@@ -1,0 +1,34 @@
+ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+,Test Case,Verify whether cookies consent pop-up display & acceptance is displayed correctly on initial launch,,,,Creatio CRM,bharattechacademy3@outlook.com,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Verify whether cookies consent pop-up display & acceptance elements are loaded on the page.,All core UI elements and controls should be displayed successfully.,,,
+,Test Case,Verify header title matches acceptance criteria for Cookies Consent Pop-up Display & Acceptance,,,,Creatio CRM,bharattechacademy3@outlook.com,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Navigate to target user story workflow screen,Target screen should display without any layout distortion.,,,
+,,,4,Verify header label matches expected text from criteria,Header label text should match specification exactly.,,,
+,Test Case,Verify negative validation when mandatory inputs are missing,,,,Creatio CRM,bharattechacademy3@outlook.com,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Leave mandatory fields empty and click submit / action button,Validation error messages should be displayed clearly indicating required fields.,,,
+,Test Case,Verify edge case handling for rapid user actions and boundary inputs,,,,Creatio CRM,bharattechacademy3@outlook.com,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Perform rapid consecutive clicks on action buttons or enter maximum boundary string length,System should remain stable without duplicate submissions or UI corruption.,,,

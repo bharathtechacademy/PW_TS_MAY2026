@@ -1,0 +1,89 @@
+ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+,Test Case,Verify successful login with valid business email and password,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Enter valid Business Email and Password and click Login button,User should be authenticated successfully and redirected to Creatio CRM dashboard.,,,
+,Test Case,Verify no validation errors when entering valid email with exactly 400 characters,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Enter valid formatted email of exactly 400 characters in Business Email field,No email validation error should be displayed and field should remain valid.,,,
+,Test Case,Verify no validation errors when entering valid password with exactly 100 characters,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Enter password of exactly 100 characters in Password field,No password validation error should be displayed.,,,
+,Test Case,"Verify red highlight and ""Invalid email format"" error when email format is invalid (missing @ symbol)",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,"Enter ""userdomain.com"" in Business Email field and trigger validation","Business Email field should be highlighted in red and ""Invalid email format"" error message should be displayed.",,,
+,Test Case,"Verify red highlight and ""Invalid email format"" error when email domain is invalid",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,"Enter ""user@company"" in Business Email field and trigger validation","Business Email field should be highlighted in red and ""Invalid email format"" error message should be displayed.",,,
+,Test Case,"Verify ""Invalid email or password"" error displayed at bottom of page for incorrect password",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Enter valid email format with incorrect password and click Login button,"""Invalid email or password"" error message should be displayed at the bottom of the page.",,,
+,Test Case,"Verify ""Invalid email or password"" error displayed at bottom of page for non-existent user",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Enter non-existent user email and any password and click Login button,"""Invalid email or password"" error message should be displayed at the bottom of the page without user enumeration.",,,
+,Test Case,"Verify red highlight and ""Invalid email format"" error when email exceeds 400 characters (401 characters)",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Enter validly formatted email string of 401 characters in Business Email field,"Business Email field should be highlighted in red and ""Invalid email format"" error message should be displayed.",,,
+,Test Case,Verify red highlight and error message when password exceeds 100 characters (101 characters),,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Enter password string of 101 characters in Password field,"Password field should be highlighted in red and ""Invalid value. Value must contain up to 100 characters"" error message should be displayed.",,,
+,Test Case,Verify form validation behavior when pasting 450-character string into email field,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,Paste a 450-character email string into Business Email field via clipboard,"Business Email field should be highlighted in red and ""Invalid email format"" error message should be displayed immediately.",,,
+,Test Case,Verify simultaneous field error highlighting when both email format and password length are invalid,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully.,,,
+,,,3,"Enter invalid email ""userdomain"" and 105-character password, then click Login",Both Business Email and Password fields should be highlighted in red with their respective error messages.,,,

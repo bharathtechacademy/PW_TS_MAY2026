@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azure Test Execution Report - Plan #1357 Suite #1505</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+      --accent-red: #ef4444;
+      --accent-orange: #f97316;
+      --badge-pass-bg: rgba(34, 197, 94, 0.15);
+      --badge-pass-text: #4ade80;
+      --badge-fail-bg: rgba(239, 68, 68, 0.15);
+      --badge-fail-text: #f87171;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      padding: 24px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-title h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-title p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .chip-mcp {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .metric-card .label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .metric-card .value {
+      font-size: 28px;
+      font-weight: 700;
+      margin-top: 8px;
+      color: var(--text-main);
+    }
+
+    .metric-card.pass .value { color: var(--accent-green); }
+    .metric-card.fail .value { color: var(--accent-red); }
+    .metric-card.rate .value { color: var(--accent-blue); }
+
+    .test-case-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .test-case-header {
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .test-case-header:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tc-title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tc-id {
+      background: #334155;
+      color: #f1f5f9;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .tc-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .tc-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .duration {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-pass {
+      background: var(--badge-pass-bg);
+      color: var(--badge-pass-text);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .badge-fail {
+      background: var(--badge-fail-bg);
+      color: var(--badge-fail-text);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .bug-link {
+      background: rgba(249, 115, 22, 0.15);
+      color: var(--accent-orange);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .accordion-icon {
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+
+    .test-case-body {
+      padding: 20px;
+      border-top: 1px solid var(--card-border);
+      background: #0f172a;
+    }
+
+    .steps-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .steps-table th {
+      background: #1e293b;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .steps-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: middle;
+    }
+
+    .screenshot-thumb {
+      width: 50px;
+      height: 32px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--card-border);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .screenshot-thumb:hover {
+      transform: scale(1.15);
+      border-color: var(--accent-blue);
+    }
+
+    /* Image Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-title">
+        <h1>
+          Azure Test Execution Report
+          <span class="chip-mcp">Playwright MCP Engine</span>
+        </h1>
+        <p>Executed on 7/8/2026, 11:07:28 am | Plan ID: #1357 | Suite ID: #1505 | ADO Test Run: #136</p>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="label">Total Test Cases</div>
+        <div class="value">4</div>
+      </div>
+      <div class="metric-card pass">
+        <div class="label">Passed Cases</div>
+        <div class="value">3</div>
+      </div>
+      <div class="metric-card fail">
+        <div class="label">Failed Cases</div>
+        <div class="value">1</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">Total Steps</div>
+        <div class="value">17</div>
+      </div>
+      <div class="metric-card rate">
+        <div class="label">Pass Rate</div>
+        <div class="value">75.0%</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">Total Duration</div>
+        <div class="value">88.09s</div>
+      </div>
+    </div>
+
+    <div class="test-cases-list">
+      
+        <div class="test-case-card">
+          <div class="test-case-header" onclick="toggleAccordion('tc-body-0')">
+            <div class="tc-title-wrapper">
+              <span class="tc-id">170</span>
+              <span class="tc-title">Verify logos displayed in the Cookies popup.</span>
+            </div>
+            <div class="tc-meta">
+              <span class="duration">7.32s</span>
+              <span class="badge badge-fail">Fail</span>
+              <span class="bug-link">Bug #1511</span>
+              <span class="accordion-icon" id="icon-tc-body-0">▼</span>
+            </div>
+          </div>
+          <div class="test-case-body" id="tc-body-0" style="display: block;">
+            <table class="steps-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px;">Step #</th>
+                  <th style="width: 25%;">Action</th>
+                  <th style="width: 15%;">Test Data</th>
+                  <th style="width: 25%;">Expected Result</th>
+                  <th style="width: 90px;">Status</th>
+                  <th>Remarks</th>
+                  <th style="width: 100px;">Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+          <tr>
+            <td style="font-weight: 600; text-align: center;">1</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;Launch the browser. 
+
+Browser = Chrome&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;Browser should be launched successfully.&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Executed successfully and verified expected output.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_170_step_1_1786080957134.png" alt="Step 1" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">2</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;Enter URL and launch the application. 
+
+URL = https://accounts.creatio.com/login/alm&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;application should be launched successfully.&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Executed successfully and verified expected output.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_170_step_2_1786080962010.png" alt="Step 2" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">3</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;Verify whether Cookies popup is getting displayed&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;cookies pop-up should get displayed before the login page to take the consent from the user.&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Cookies pop-up banner verified successfully on screen.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_170_step_3_1786080963899.png" alt="Step 3" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">4</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;Verify logos displayed in the Cookies popup.&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;Creatio logo and Cookies Bot logo  should be displayed within the cookies popup.&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Verified logos displayed in Cookies pop-up.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_170_step_4_1786080963972.png" alt="Step 4" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">5</td>
+            <td>&amp;lt;DIV&amp;gt;&amp;lt;P&amp;gt;Verify social media platform logos displayed in the cookies pop-up&amp;lt;/P&amp;gt;&amp;lt;/DIV&amp;gt;</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>&amp;lt;P&amp;gt;Bookies pop-up also should have the below social media logos. &amp;lt;BR/&amp;gt;&amp;lt;BR/&amp;gt;1. Instagram&amp;lt;BR/&amp;gt;2. X / twitter&amp;lt;BR/&amp;gt;3. Facebook&amp;lt;/P&amp;gt;</td>
+            <td text-align="center"><span class="badge badge-fail">Fail</span></td>
+            <td style="font-size: 13px;">Assertion Failed: Social media platform logos (Facebook, Twitter, Instagram) were NOT displayed in the cookies pop-up or on screen.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_170_step_5_1786080964038.png" alt="Step 5" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+        <div class="test-case-card">
+          <div class="test-case-header" onclick="toggleAccordion('tc-body-1')">
+            <div class="tc-title-wrapper">
+              <span class="tc-id">171</span>
+              <span class="tc-title">Verify selection buttons displayed within the Cookies pop.</span>
+            </div>
+            <div class="tc-meta">
+              <span class="duration">5.78s</span>
+              <span class="badge badge-pass">Pass</span>
+              
+              <span class="accordion-icon" id="icon-tc-body-1">▼</span>
+            </div>
+          </div>
+          <div class="test-case-body" id="tc-body-1" style="display: block;">
+            <table class="steps-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px;">Step #</th>
+                  <th style="width: 25%;">Action</th>
+                  <th style="width: 15%;">Test Data</th>
+                  <th style="width: 25%;">Expected Result</th>
+                  <th style="width: 90px;">Status</th>
+                  <th>Remarks</th>
+                  <th style="width: 100px;">Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+          <tr>
+            <td style="font-weight: 600; text-align: center;">1</td>
+            <td>Launch the browser. 
+
+Browser = Chrome</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Browser should be launched successfully.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Executed successfully and verified expected output.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_171_step_1_1786080964451.png" alt="Step 1" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">2</td>
+            <td>Enter URL and launch the application. 
+
+URL = https://accounts.creatio.com/login/alm</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>application should be launched successfully.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Executed successfully and verified expected output.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_171_step_2_1786080968052.png" alt="Step 2" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">3</td>
+            <td>Verify whether Cookies popup is getting displayed</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Cookies pop-up banner verified successfully on screen.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_171_step_3_1786080969836.png" alt="Step 3" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">4</td>
+            <td>Verify selection buttons displayed within the Cookies pop.</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Cookies popup should be displayed with three different selection buttons mentioned below. 
+1.Allow All
+2.Allow Selection
+3.Deny</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Verified selection buttons and options displayed within the Cookies pop-up.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_171_step_4_1786080969889.png" alt="Step 4" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+        <div class="test-case-card">
+          <div class="test-case-header" onclick="toggleAccordion('tc-body-2')">
+            <div class="tc-title-wrapper">
+              <span class="tc-id">416</span>
+              <span class="tc-title">Verify invalid email format validation</span>
+            </div>
+            <div class="tc-meta">
+              <span class="duration">36.70s</span>
+              <span class="badge badge-pass">Pass</span>
+              
+              <span class="accordion-icon" id="icon-tc-body-2">▼</span>
+            </div>
+          </div>
+          <div class="test-case-body" id="tc-body-2" style="display: block;">
+            <table class="steps-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px;">Step #</th>
+                  <th style="width: 25%;">Action</th>
+                  <th style="width: 15%;">Test Data</th>
+                  <th style="width: 25%;">Expected Result</th>
+                  <th style="width: 90px;">Status</th>
+                  <th>Remarks</th>
+                  <th style="width: 100px;">Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+          <tr>
+            <td style="font-weight: 600; text-align: center;">1</td>
+            <td>Launch the browser. 
+
+Browser = Chrome</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Browser should be launched successfully.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Executed successfully and verified expected output.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_416_step_1_1786080970101.png" alt="Step 1" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">2</td>
+            <td>Enter URL and launch the application. 
+
+URL = https://accounts.creatio.com/login/alm</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Application should be launched successfully.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Executed successfully and verified expected output.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_416_step_2_1786080974030.png" alt="Step 2" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">3</td>
+            <td>Verify whether Cookies popup is getting displayed</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Cookies pop-up banner verified successfully on screen.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_416_step_3_1786080975933.png" alt="Step 3" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">4</td>
+            <td>Enter an invalid email format (e.g., &#039;user@domain&#039;) in Business Email field.</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Business Email field should be highlighted in red and error message &#039;Invalid email format&#039; should be displayed.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Entered input into field and validated format rules.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_416_step_4_1786080975964.png" alt="Step 4" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+        <div class="test-case-card">
+          <div class="test-case-header" onclick="toggleAccordion('tc-body-3')">
+            <div class="tc-title-wrapper">
+              <span class="tc-id">417</span>
+              <span class="tc-title">Verify excessive email length validation</span>
+            </div>
+            <div class="tc-meta">
+              <span class="duration">38.28s</span>
+              <span class="badge badge-pass">Pass</span>
+              
+              <span class="accordion-icon" id="icon-tc-body-3">▼</span>
+            </div>
+          </div>
+          <div class="test-case-body" id="tc-body-3" style="display: block;">
+            <table class="steps-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px;">Step #</th>
+                  <th style="width: 25%;">Action</th>
+                  <th style="width: 15%;">Test Data</th>
+                  <th style="width: 25%;">Expected Result</th>
+                  <th style="width: 90px;">Status</th>
+                  <th>Remarks</th>
+                  <th style="width: 100px;">Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+          <tr>
+            <td style="font-weight: 600; text-align: center;">1</td>
+            <td>Launch the browser. 
+
+Browser = Chrome</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Browser should be launched successfully.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Executed successfully and verified expected output.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_417_step_1_1786081006807.png" alt="Step 1" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">2</td>
+            <td>Enter URL and launch the application. 
+
+URL = https://accounts.creatio.com/login/alm</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Application should be launched successfully.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Executed successfully and verified expected output.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_417_step_2_1786081010592.png" alt="Step 2" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">3</td>
+            <td>Verify whether Cookies popup is getting displayed</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Cookies pop-up banner verified successfully on screen.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_417_step_3_1786081014171.png" alt="Step 3" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight: 600; text-align: center;">4</td>
+            <td>Enter an email exceeding 400 characters in Business Email field.</td>
+            <td style="color: var(--text-muted); font-size: 13px;">N/A</td>
+            <td>Business Email field should be highlighted in red and error message &#039;Invalid email format&#039; should be displayed.</td>
+            <td text-align="center"><span class="badge badge-pass">Pass</span></td>
+            <td style="font-size: 13px;">Entered input into field and validated format rules.</td>
+            <td style="text-align: center;">
+              <img src="screenshots/tc_417_step_4_1786081014218.png" alt="Step 4" class="screenshot-thumb" onclick="openModal(this.src)">
+            </td>
+          </tr>
+        
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div id="imgModal" class="modal" onclick="closeModal()">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <script>
+    function toggleAccordion(id) {
+      const body = document.getElementById(id);
+      const icon = document.getElementById('icon-' + id);
+      if (body.style.display === 'none') {
+        body.style.display = 'block';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        body.style.display = 'none';
+        icon.style.transform = 'rotate(-90deg)';
+      }
+    }
+
+    function openModal(src) {
+      document.getElementById('imgModal').style.display = 'flex';
+      document.getElementById('modalImg').src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imgModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
