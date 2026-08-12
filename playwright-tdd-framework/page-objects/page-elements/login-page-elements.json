@@ -8,5 +8,11 @@
     "loginErrorMessage":"//div[contains(text(),'Invalid email or password')]",
     "linkedInIcon":"img.icon-LinkedIn",
     "googleIcon":"img.icon-google",
-    "signUpLink":"//span[text()=' SIGN UP ']"
+    "signUpLink":"//span[text()=' SIGN UP ']",
+    "businessEmailInvalidHighlight":"//input[@aria-label='Business email']/ancestor::mat-form-field[contains(@class,'crt-input-control-container--invalid')]",
+    "passwordInvalidHighlight":"//input[@aria-label='Password']/ancestor::mat-form-field[contains(@class,'crt-input-control-container--invalid')]",
+    "businessEmailInvalidIcon":"//input[@aria-label='Business email']/ancestor::mat-form-field//mat-icon[contains(@class,'invalid-icon')]",
+    "passwordInvalidIcon":"//input[@aria-label='Password']/ancestor::mat-form-field//mat-icon[contains(@class,'invalid-icon')]",
+    "businessEmailValidationError":"//input[@aria-label='Business email']/ancestor::mat-form-field//span[contains(@class,'cdk-visually-hidden')]",
+    "passwordValidationError":"//input[@aria-label='Password']/ancestor::mat-form-field//span[contains(@class,'cdk-visually-hidden')]"
 }

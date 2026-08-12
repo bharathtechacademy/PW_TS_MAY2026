@@ -1,0 +1,16 @@
+﻿{
+    "version":  1,
+    "stories":  {
+                    "CRM-13":  {
+                                   "commentHashes":  [
+                                                         "69e2b5daac0c0fae78cde721f0b0eb8e2b685781517e127e9c8d057302cc0dc2"
+                                                     ],
+                                   "attachmentFingerprints":  [
+                                                                  "1.png|1694041|639212407340809205",
+                                                                  "2.png|1494665|639213144957056826",
+                                                                  "atm-exporter.xlsx|9460|639220635762486398"
+                                                              ],
+                                   "updatedAtUtc":  "2026-08-12T04:18:23.5870793Z"
+                               }
+                }
+}

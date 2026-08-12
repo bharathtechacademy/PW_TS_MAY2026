@@ -1,0 +1,461 @@
+[
+  {
+    "id": "159",
+    "title": "Verify whether cookies popup is getting displayed when user launch the application",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "cookies pop-up should get displayed before the login page to take the consent from the user."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "160",
+    "title": "Verify Cookies Consent message displayed in the Cookies popup",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "cookies pop-up should get displayed before the login page to take the consent from the user."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Verify Cookies Consent message displayed in the Cookies popup",
+        "expectedResult": "consent message should be displayed as below \"This website uses cookiesWe may use cookies and similar technologies to collect information about the ways you interact with and use the website, to support and enhance features and functionality, to monitor performance, to personalize content and experiences, for marketing and analytics, and for other lawful purposes. We also may share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services. Please, see more details on the \"About\" tab \""
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "170",
+    "title": "Verify logos displayed in the Cookies popup.",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "cookies pop-up should get displayed before the login page to take the consent from the user."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Verify logos displayed in the Cookies popup.",
+        "expectedResult": "Creatio logo and Cookies Bot logo should be displayed within the cookies popup."
+      },
+      {
+        "stepId": "6",
+        "stepNumber": 5,
+        "action": "Verify social media platform logos displayed in the cookies pop-up",
+        "expectedResult": "Bookies pop-up also should have the below social media logos. 1. Instagram 2. X / twitter 3. Facebook"
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "171",
+    "title": "Verify selection buttons displayed within the Cookies pop.",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "cookies pop-up should get displayed before the login page to take the consent from the user."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Verify selection buttons displayed within the Cookies pop.",
+        "expectedResult": "Cookies popup should be displayed with three different selection buttons mentioned below. 1.Allow All 2.Allow Selection 3.Deny"
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "416",
+    "title": "Verify invalid email format validation",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "Application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "Cookies pop-up should get displayed before the login page to take the consent from the user."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter an invalid email format (e.g., 'user@domain') in Business Email field.",
+        "expectedResult": "Business Email field should be highlighted in red and error message 'Invalid email format' should be displayed."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "417",
+    "title": "Verify excessive email length validation",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "Application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "Cookies pop-up should get displayed before the login page to take the consent from the user."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter an email exceeding 400 characters in Business Email field.",
+        "expectedResult": "Business Email field should be highlighted in red and error message 'Invalid email format' should be displayed."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "418",
+    "title": "Verify excessive password length validation",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "Application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "Cookies pop-up should get displayed before the login page to take the consent from the user."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter a password exceeding 100 characters in Password field.",
+        "expectedResult": "Password field should be highlighted in red and error message 'Invalid value. Value must contain up to 100 characters' should be displayed."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "419",
+    "title": "Verify invalid credentials error message",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "Application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "Cookies pop-up should get displayed before the login page to take the consent from the user."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter incorrect email and password combination and click Login.",
+        "expectedResult": "Error message 'Invalid email or password' should be displayed at the bottom of the page."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "420",
+    "title": "Verify successful login with valid credentials",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the browser. Browser = Chrome",
+        "expectedResult": "Browser should be launched successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm",
+        "expectedResult": "Application should be launched successfully."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify whether Cookies popup is getting displayed",
+        "expectedResult": "Cookies pop-up should get displayed before the login page to take the consent from the user."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter valid business email and password and click Login.",
+        "expectedResult": "User should be successfully logged in and redirected to the dashboard."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "441",
+    "title": "Verify Invalid Email Format Validation",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the 'Chrome' browser.",
+        "expectedResult": "Chrome browser should launch successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.",
+        "expectedResult": "Application should launch and navigate to Log In page."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify Cookies Consent pop-up appears on the Log In page.",
+        "expectedResult": "Cookies consent popup should appear."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter an invalid email format (e.g., 'test@domain' without extension or 'testdomain.com') in the Business Email field.",
+        "expectedResult": "User inputs invalid email."
+      },
+      {
+        "stepId": "6",
+        "stepNumber": 5,
+        "action": "Verify validation error on Business Email field.",
+        "expectedResult": "Business Email field should be highlighted with red color and 'Invalid email format' error should be displayed."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "442",
+    "title": "Verify Email Length Validation (>400 chars)",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the 'Chrome' browser.",
+        "expectedResult": "Chrome browser should launch successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.",
+        "expectedResult": "Application should launch and navigate to Log In page."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify Cookies Consent pop-up appears on the Log In page.",
+        "expectedResult": "Cookies consent popup should appear."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter an email address with more than 400 characters in the Business Email field.",
+        "expectedResult": "User inputs long email."
+      },
+      {
+        "stepId": "6",
+        "stepNumber": 5,
+        "action": "Verify validation error on Business Email field.",
+        "expectedResult": "Business Email field should be highlighted with red color and 'Invalid email format' error should be displayed."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "443",
+    "title": "Verify Password Length Validation (>100 chars)",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the 'Chrome' browser.",
+        "expectedResult": "Chrome browser should launch successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.",
+        "expectedResult": "Application should launch and navigate to Log In page."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify Cookies Consent pop-up appears on the Log In page.",
+        "expectedResult": "Cookies consent popup should appear."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter a password with more than 100 characters in the Password field.",
+        "expectedResult": "User inputs long password."
+      },
+      {
+        "stepId": "6",
+        "stepNumber": 5,
+        "action": "Verify validation error on Password field.",
+        "expectedResult": "Password field should be highlighted with red color and 'Invalid value. Value must contain up to 100 characters' error should be displayed."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  },
+  {
+    "id": "444",
+    "title": "Verify Invalid Login Credentials Validation",
+    "steps": [
+      {
+        "stepId": "2",
+        "stepNumber": 1,
+        "action": "Launch the 'Chrome' browser.",
+        "expectedResult": "Chrome browser should launch successfully."
+      },
+      {
+        "stepId": "3",
+        "stepNumber": 2,
+        "action": "Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.",
+        "expectedResult": "Application should launch and navigate to Log In page."
+      },
+      {
+        "stepId": "4",
+        "stepNumber": 3,
+        "action": "Verify Cookies Consent pop-up appears on the Log In page.",
+        "expectedResult": "Cookies consent popup should appear."
+      },
+      {
+        "stepId": "5",
+        "stepNumber": 4,
+        "action": "Enter a valid email format and any password.",
+        "expectedResult": "User inputs credentials."
+      },
+      {
+        "stepId": "6",
+        "stepNumber": 5,
+        "action": "Click the Log In button with invalid credentials (e.g. valid user wrong pass, or unregistered user).",
+        "expectedResult": "Login attempt initiated."
+      },
+      {
+        "stepId": "7",
+        "stepNumber": 6,
+        "action": "Verify global error message displayed.",
+        "expectedResult": "'Invalid email or password' error should be displayed at the bottom of the page."
+      }
+    ],
+    "state": "Design",
+    "assignedTo": "Bharath Tech Academy",
+    "areaPath": "Creatio CRM"
+  }
+]

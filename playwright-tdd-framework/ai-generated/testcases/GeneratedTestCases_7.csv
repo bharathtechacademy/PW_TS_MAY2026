@@ -1,0 +1,209 @@
+ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+,Test Case,Verify cookies consent popup is displayed below the login form on page load,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,Observe the bottom area of the login page below the login form,Cookies consent popup should be displayed below the login form with all required consent content and action controls.,,,
+,Test Case,"Verify whether the cookies consent popup header is ""This website uses cookies""",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,Locate the cookies consent popup header text,"Cookies consent popup header should display exactly ""This website uses cookies"".",,,
+,Test Case,Verify cookies consent body message content is displayed as per acceptance criteria,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,Read the consent message body text in the cookies popup,"Consent body should match the approved message including reference to the ""About"" tab:
+
+We may use cookies and similar technologies to collect information about the ways you interact with and use the website, to support and enhance features and functionality, to monitor performance, to personalize content and experiences, for marketing and analytics, and for other lawful purposes. We also may share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you've provided to them or that they've collected from your use of their services. Please, see more details on the ""About"" tab",,,
+,Test Case,Verify Necessary cookie switch is displayed and disabled by default,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,Locate the Necessary switch in the cookies consent popup,"Necessary switch should be visible, labeled ""Necessary"", enabled/on for required cookies, and disabled (not user-toggleable).",,,
+,Test Case,"Verify Preferences, Statistics, and Marketing cookie switches are displayed and enabled for user selection",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Locate Preferences, Statistics, and Marketing switches in the cookies consent popup","Preferences, Statistics, and Marketing switches should be displayed and available for user selection (not disabled like Necessary).",,,
+,Test Case,"Verify ""Show details"" hyperlink is displayed on the cookies consent popup",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Locate the ""Show details"" hyperlink in the cookies consent popup","""Show details"" hyperlink should be visible and clickable.",,,
+,Test Case,"Verify clicking ""Show details"" expands the cookies consent details section",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Click the ""Show details"" hyperlink",Cookies consent details section should expand and display additional cookie category details without closing the popup.,,,
+,Test Case,"Verify ""Allow all"", ""Allow selection"", and ""Deny"" action buttons are displayed",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,Inspect action buttons on the cookies consent popup,"Buttons labeled ""Allow all"", ""Allow selection"", and ""Deny"" should all be visible and enabled.",,,
+,Test Case,"Verify clicking ""Allow all"" closes the cookies consent popup",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Click the ""Allow all"" button on the cookies consent popup",Cookies consent popup should close and no longer be displayed on the login page.,,,
+,Test Case,"Verify clicking ""Deny"" closes the cookies consent popup",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Click the ""Deny"" button on the cookies consent popup",Cookies consent popup should close and no longer be displayed on the login page.,,,
+,Test Case,"Verify clicking ""Allow selection"" closes the cookies consent popup after optional category selection",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,Enable Preferences switch and leave Statistics and Marketing as currently set,Preferences switch should reflect the selected state; Necessary remains disabled/on.,,,
+,,,4,"Click the ""Allow selection"" button",Cookies consent popup should close successfully after selection is confirmed.,,,
+,Test Case,"Verify ""Allow all"" enables Preferences, Statistics, and Marketing cookie categories",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Click the ""Allow all"" button","Popup should close and all optional cookie categories (Preferences, Statistics, Marketing) should be treated as allowed along with Necessary.",,,
+,,,4,Re-open cookie preferences via available UI control or inspect stored consent preference,Stored consent should reflect all categories allowed.,,,
+,Test Case,Verify user cannot change the Necessary cookie switch state,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,Attempt to click/toggle the Necessary switch,Necessary switch should remain disabled and its state should not change.,,,
+,Test Case,"Verify ""Allow selection"" with no optional categories selected still closes popup and keeps only Necessary cookies",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Ensure Preferences, Statistics, and Marketing switches are OFF/deselected",Only Necessary should remain selected/on; optional switches should be deselected.,,,
+,,,4,"Click the ""Allow selection"" button",Popup should close and consent should retain only Necessary cookies.,,,
+,Test Case,Verify cookies consent popup does not reappear immediately after a consent choice in the same session,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Click ""Allow all"" and remain on the login page",Cookies consent popup should close.,,,
+,,,4,Observe the login page for any reappearance of the cookies consent popup without reload/navigation that clears consent,Cookies consent popup should not reappear in the same session after consent is given.,,,
+,Test Case,"Verify cookies consent popup remains visible until user selects Allow all, Allow selection, or Deny",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Interact with the login form fields without clicking Allow all, Allow selection, or Deny",Cookies consent popup should remain visible at the bottom of the page until an explicit consent action button is clicked.,,,
+,Test Case,Verify cookies consent popup is positioned below the login form and does not obscure primary login controls,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,Compare vertical position of cookies consent popup relative to the login form and action buttons,Popup should appear below the login form as per design and login email/password/login controls should remain usable.,,,
+,Test Case,Verify all cookie category switches and action buttons remain fully visible at standard desktop viewport,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Set browser viewport to standard desktop size (e.g., 1366x768) and inspect consent controls","Necessary, Preferences, Statistics, Marketing switches and Allow all / Allow selection / Deny buttons should be fully visible without clipping.",,,
+,Test Case,Verify cookies consent popup and controls remain usable at minimum supported mobile viewport width,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Set viewport to minimum supported mobile width (e.g., 375px) and open the login URL
+
+https://accounts.creatio.com/login/alm",Login page and cookies consent popup should load; switches and action buttons should remain accessible/scrollable and usable.,,,
+,Test Case,"Verify selecting all optional switches then Allow selection saves Preferences, Statistics, and Marketing",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Turn ON Preferences, Statistics, and Marketing switches",All three optional switches should show selected/ON state; Necessary remains disabled/on.,,,
+,,,4,"Click ""Allow selection""",Popup should close and stored consent should include Necessary plus all optional categories.,,,
+,Test Case,Verify cookies consent popup reappears for a new browser session when no prior consent cookie/preference exists,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch a fresh browser context/session with cleared cookies and site data
+
+Browser = Chrome",Fresh browser session should start with no prior Creatio consent preference.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Cookies consent popup should be displayed below the login form for first-time/no-consent users.,,,
+,Test Case,Verify consent choice persists after page refresh following Allow all,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Click ""Allow all""",Cookies consent popup should close.,,,
+,,,4,Refresh the login page,Cookies consent popup should not reappear after refresh when Allow all consent is persisted.,,,
+,Test Case,Verify consent choice persists after page refresh following Deny,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Click ""Deny""",Cookies consent popup should close.,,,
+,,,4,Refresh the login page,Cookies consent popup should not reappear after refresh when Deny consent is persisted.,,,
+,Test Case,Verify rapid repeated clicks on Allow all do not leave popup in an inconsistent open/closed state,,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Rapidly click the ""Allow all"" button multiple times in quick succession","Popup should close cleanly once; no duplicate overlays, errors, or stuck open state should occur.",,,
+,Test Case,"Verify expanding ""Show details"" and then choosing Deny still closes the popup",,,,Creatio CRM,Bharath Tech Academy <bharattechacademy3@outlook.com>,Design
+,,,1,"Launch the Browser
+
+Browser = Chrome",Chrome Browser should be launched successfully.,,,
+,,,2,"Enter URL and Launch the Application
+
+https://accounts.creatio.com/login/alm",Application should be launched successfully and login page should be displayed.,,,
+,,,3,"Click ""Show details"" to expand cookie details",Details section should expand successfully.,,,
+,,,4,"Click ""Deny""",Cookies consent popup should close even when details section was expanded.,,,

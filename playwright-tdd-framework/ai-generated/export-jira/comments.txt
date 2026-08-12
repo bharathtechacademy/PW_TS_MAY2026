@@ -1,0 +1,1 @@
+Login form validations are having some missing information. A little more detailed explanation about the fields, and also the technical information for each and every field, should be added. 

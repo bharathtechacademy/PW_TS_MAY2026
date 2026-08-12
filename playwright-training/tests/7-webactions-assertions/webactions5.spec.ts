@@ -11,6 +11,9 @@ test('Frames Assignment', async ({ page }) => {
     // 3. Type username in the username field
     await username.fill("Admin");
 
+    //wait for 2 seconds
+    await page.waitForTimeout(2000);
+
     // Take screenshot of the username field after filling it
     await username.screenshot({ path: 'screenshots/username_field.png' });
     await page.screenshot({ path: 'screenshots/page_after_username.png' });

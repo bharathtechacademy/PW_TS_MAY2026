@@ -2,16 +2,28 @@
     "Verify Cookies popup content": {
         "content": "We may use cookies and similar technologies to collect information about the ways you interact with and use the website, to support and enhance features and functionality"
     },
-    "Verify login functionality with valid credentials":{
-       "username":"bharattechacademy5@outlook.com",
-        "password":"BharathTechAcademy#1234"
+    "Verify login functionality with valid credentials": {
+        "username": "bharattechacademy5@outlook.com",
+        "password": "BharathTechAcademy#1234"
     },
-    "Verify login functionality with invalid credentials":{
-        "username":"invalid@gmail.com",
-        "password":"invalidpassword"
+    "Verify login functionality with invalid credentials": {
+        "username": "invalid@gmail.com",
+        "password": "invalidpassword"
     },
-    "Verify logout functionality with valid credentials":{
-       "username":"bharattechacademy5@outlook.com",
-        "password":"BharathTechAcademy#1234"
+    "Verify logout functionality with valid credentials": {
+        "username": "bharattechacademy5@outlook.com",
+        "password": "BharathTechAcademy#1234"
+    },
+    "Verify Invalid Email Format Validation": {
+        "username": "test@domain",
+        "expectedError": "Invalid email format"
+    },
+    "Verify Email Length Validation (>400 chars)": {
+        "username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@test.com",
+        "expectedError": "Invalid email format"
+    },
+    "Verify Password Length Validation (>100 chars)": {
+        "password": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "expectedError": "Invalid value. Value must contain up to 100 characters"
     }
 }

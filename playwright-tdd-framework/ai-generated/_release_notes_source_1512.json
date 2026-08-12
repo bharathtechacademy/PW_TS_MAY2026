@@ -1,0 +1,748 @@
+{
+  "auth": {
+    "project": "Creatio CRM",
+    "orgUrl": "https://dev.azure.com/bharattechacademy3/Creatio%20CRM"
+  },
+  "email": "bharattechacademy3@outlook.com",
+  "stories": [
+    {
+      "id": 7,
+      "type": "User Story",
+      "title": "Design and Implement Cookies consent with different options",
+      "state": "New",
+      "assignedTo": "Bharath Tech Academy",
+      "area": "Creatio CRM",
+      "iteration": "Creatio CRM\\Sprint 1",
+      "priority": 2,
+      "tags": "Cookies",
+      "description": "Description: As a user, while login into the\napplication I should get Cookies consent at the bottom of the login page with\nnecessary details",
+      "acceptanceCriteria": "Login Page Url: https://accounts.creatio.com/login/alm \nWhen user open login page user should get cookies pop-up below login form as displayed in the image. \n  \n \n     \n\n  \n  \nConsent Message: Below content should be displayed. \n  \nThis website uses cookies \nWe may use cookies and similar technologies to collect information about\nthe ways you interact with and use the website, to support and enhance features\nand functionality, to monitor performance, to personalize content and\nexperiences, for marketing and analytics, and for other lawful purposes. We\nalso may share information about your use of our site with our social media,\nadvertising and analytics partners who may combine it with other information\nthat you’ve provided to them or that they’ve collected from your use of their\nservices. Please, see more details on the \"About\" tab \n  \nSwitch buttons: Below buttons should be displayed \n  \nNecessary (disabled) \nPreferences \nStatistics \nMarketing \n  \nHyperlink: User should have ‘Show details’ hyperlink to expand the cookies\nconsent. \n  \nButtons: Allow all, Allow selection, Deny  \n\n \n\n \nWhen user click on any of above button’s pop-up should be closed.",
+      "relations": [
+        {
+          "rel": "System.LinkTypes.Hierarchy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/141",
+          "name": "Child"
+        },
+        {
+          "rel": "System.LinkTypes.Hierarchy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/140",
+          "name": "Child"
+        },
+        {
+          "rel": "System.LinkTypes.Hierarchy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/144",
+          "name": "Child"
+        },
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1",
+          "name": "Parent"
+        },
+        {
+          "rel": "System.LinkTypes.Hierarchy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/142",
+          "name": "Child"
+        },
+        {
+          "rel": "System.LinkTypes.Hierarchy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/143",
+          "name": "Child"
+        },
+        {
+          "rel": "System.LinkTypes.Hierarchy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/145",
+          "name": "Child"
+        }
+      ],
+      "testedBy": []
+    },
+    {
+      "id": 8,
+      "type": "User Story",
+      "title": "Cookies consent expanded view to display the complete details",
+      "state": "New",
+      "assignedTo": "Unassigned",
+      "area": "Creatio CRM",
+      "iteration": "Creatio CRM\\Sprint 1",
+      "priority": 2,
+      "tags": "",
+      "description": "Description: As a user, while login into the\napplication I should get Cookies consent at the bottom of the login page with\nshow details link. When user click on the link user should get expanded view to\nsee complete details and ‘about’ cookie details.",
+      "acceptanceCriteria": "",
+      "relations": [
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1",
+          "name": "Parent"
+        }
+      ],
+      "testedBy": []
+    },
+    {
+      "id": 9,
+      "type": "User Story",
+      "title": "Design and Implement Login Form",
+      "state": "New",
+      "assignedTo": "Unassigned",
+      "area": "Creatio CRM",
+      "iteration": "Creatio CRM\\Sprint 1",
+      "priority": 2,
+      "tags": "",
+      "description": "Description: As an existing user, I want to log in to\nmy Creatio CRM account using my business email and password through a secure\nand well-designed form.",
+      "acceptanceCriteria": "",
+      "relations": [
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1",
+          "name": "Parent"
+        }
+      ],
+      "testedBy": []
+    },
+    {
+      "id": 10,
+      "type": "User Story",
+      "title": "Login Form Validations for basic Login with user credentials",
+      "state": "New",
+      "assignedTo": "Unassigned",
+      "area": "Creatio CRM",
+      "iteration": "Creatio CRM\\Sprint 1",
+      "priority": 2,
+      "tags": "",
+      "description": "Description: As an existing user, I want to log in to\nmy Creatio CRM account using my business email and password through a secure\nand well-designed form and get the errors when we update invalid credentials.",
+      "acceptanceCriteria": "Acceptance Criteria: \n- Business Email field should be highlighted with red color and ‘Invalid email format’ error should be displayed when\nuser enters invalid email format and domain names. - Business Email field should be highlighted with red color and ‘Invalid email format’ error should be displayed when\nuser enters email with more than 400 chars. - Password field should be highlighted with red color and ‘Invalid value. Value must contain up to 100 characters’\nerror should be displayed when user enters password with more than 100\nchars. - ‘Invalid email or password’ error\nshould be displayed at the bottom of the page when user enters invalid username\n/password and try to login.",
+      "relations": [
+        {
+          "rel": "System.LinkTypes.Hierarchy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1",
+          "name": "Parent"
+        }
+      ],
+      "testedBy": []
+    }
+  ],
+  "parents": [
+    {
+      "id": 1,
+      "type": "Epic",
+      "title": "User Login Experience",
+      "state": "New"
+    }
+  ],
+  "plan": {
+    "id": 1512,
+    "name": "Sprint 3 - Test Plan",
+    "state": "Active",
+    "areaPath": "Creatio CRM",
+    "iteration": "Creatio CRM\\Iteration 2"
+  },
+  "suite": {
+    "id": 1514,
+    "name": "Regression",
+    "suiteType": "staticTestSuite"
+  },
+  "points": [
+    {
+      "id": 483,
+      "testCaseId": "159",
+      "testCaseName": "Verify whether cookies popup is getting displayed when user launch the application",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 484,
+      "testCaseId": "160",
+      "testCaseName": "Verify Cookies Consent message displayed in the Cookies popup",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 485,
+      "testCaseId": "170",
+      "testCaseName": "Verify logos displayed in the Cookies popup.",
+      "outcome": "Failed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 486,
+      "testCaseId": "171",
+      "testCaseName": "Verify selection buttons displayed within the Cookies pop.",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 487,
+      "testCaseId": "416",
+      "testCaseName": "Verify invalid email format validation",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 488,
+      "testCaseId": "417",
+      "testCaseName": "Verify excessive email length validation",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 489,
+      "testCaseId": "418",
+      "testCaseName": "Verify excessive password length validation",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 490,
+      "testCaseId": "419",
+      "testCaseName": "Verify invalid credentials error message",
+      "outcome": "Failed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 491,
+      "testCaseId": "420",
+      "testCaseName": "Verify successful login with valid credentials",
+      "outcome": "Failed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 492,
+      "testCaseId": "441",
+      "testCaseName": "Verify Invalid Email Format Validation",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 493,
+      "testCaseId": "442",
+      "testCaseName": "Verify Email Length Validation (>400 chars)",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 494,
+      "testCaseId": "443",
+      "testCaseName": "Verify Password Length Validation (>100 chars)",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    },
+    {
+      "id": 495,
+      "testCaseId": "444",
+      "testCaseName": "Verify Invalid Login Credentials Validation",
+      "outcome": "Passed",
+      "lastResultState": "Completed",
+      "lastResultDetails": {
+        "duration": 0,
+        "dateCompleted": "2026-08-10T04:19:11.467Z",
+        "runBy": {
+          "displayName": "Bharath Tech Academy",
+          "id": "786df5f0-1779-6a42-bed6-657f482a9768"
+        }
+      },
+      "assignedTo": "Bharath Tech Academy <Windows Live ID\\bharattechacademy3@outlook.com>"
+    }
+  ],
+  "testCases": [
+    {
+      "id": 159,
+      "title": "Verify whether cookies popup is getting displayed when user launch the application",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "System.LinkTypes.Related",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/160"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/141"
+        }
+      ]
+    },
+    {
+      "id": 160,
+      "title": "Verify Cookies Consent message displayed in the Cookies popup",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/141"
+        },
+        {
+          "rel": "System.LinkTypes.Related",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/159"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1515"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/421"
+        }
+      ]
+    },
+    {
+      "id": 170,
+      "title": "Verify logos displayed in the Cookies popup.",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1511"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1506"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/141"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1510"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1516"
+        }
+      ]
+    },
+    {
+      "id": 171,
+      "title": "Verify selection buttons displayed within the Cookies pop.",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Reverse",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/141"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1507"
+        }
+      ]
+    },
+    {
+      "id": 416,
+      "title": "Verify invalid email format validation",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1508"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1517"
+        }
+      ]
+    },
+    {
+      "id": 417,
+      "title": "Verify excessive email length validation",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1518"
+        },
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1509"
+        }
+      ]
+    },
+    {
+      "id": 418,
+      "title": "Verify excessive password length validation",
+      "state": "Design",
+      "relations": []
+    },
+    {
+      "id": 419,
+      "title": "Verify invalid credentials error message",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1519"
+        }
+      ]
+    },
+    {
+      "id": 420,
+      "title": "Verify successful login with valid credentials",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1520"
+        }
+      ]
+    },
+    {
+      "id": 441,
+      "title": "Verify Invalid Email Format Validation",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1521"
+        }
+      ]
+    },
+    {
+      "id": 442,
+      "title": "Verify Email Length Validation (>400 chars)",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1522"
+        }
+      ]
+    },
+    {
+      "id": 443,
+      "title": "Verify Password Length Validation (>100 chars)",
+      "state": "Design",
+      "relations": []
+    },
+    {
+      "id": 444,
+      "title": "Verify Invalid Login Credentials Validation",
+      "state": "Design",
+      "relations": [
+        {
+          "rel": "Microsoft.VSTS.Common.TestedBy-Forward",
+          "url": "https://dev.azure.com/bharattechacademy3/4753c55a-1198-4886-9381-b6979313a254/_apis/wit/workItems/1523"
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "id": 2,
+      "name": "Sprint 1 - Functional (Manual)",
+      "state": "NeedsInvestigation",
+      "totalTests": 1,
+      "passedTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 1
+    },
+    {
+      "id": 3,
+      "name": "Sprint 1 - Functional (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 11,
+      "name": "Sprint 1 - Regression (Manual)",
+      "state": "NeedsInvestigation",
+      "totalTests": 9,
+      "passedTests": 7,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 3
+    },
+    {
+      "id": 12,
+      "name": "Test (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 13,
+      "name": "Test (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 14,
+      "name": "Test (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 15,
+      "name": "Test (Manual)",
+      "state": "NeedsInvestigation",
+      "totalTests": 1,
+      "passedTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 1
+    },
+    {
+      "id": 16,
+      "name": "Regression (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 17,
+      "name": "Regression (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 18,
+      "name": "Regression (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 19,
+      "name": "Regression (Manual)",
+      "state": "NeedsInvestigation",
+      "totalTests": 1,
+      "passedTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 1
+    },
+    {
+      "id": 20,
+      "name": "Test (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 21,
+      "name": "Test (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 22,
+      "name": "Test (Manual)",
+      "state": "Completed",
+      "totalTests": 1,
+      "passedTests": 1,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 0
+    },
+    {
+      "id": 23,
+      "name": "Test (Manual)",
+      "state": "NeedsInvestigation",
+      "totalTests": 1,
+      "passedTests": 0,
+      "incompleteTests": 0,
+      "notApplicableTests": 0,
+      "unanalyzedTests": 1
+    }
+  ],
+  "bugs": [
+    {
+      "id": 1516,
+      "title": "[Auto-Defect] Failure in Test Case 170: Verify logos displayed in the Cookies popup.",
+      "state": "New",
+      "severity": "3 - Medium",
+      "priority": 2,
+      "type": "Bug"
+    },
+    {
+      "id": 1519,
+      "title": "[Auto-Defect] Failure in Test Case 419: Verify invalid credentials error message",
+      "state": "New",
+      "severity": "3 - Medium",
+      "priority": 2,
+      "type": "Bug"
+    },
+    {
+      "id": 1520,
+      "title": "[Auto-Defect] Failure in Test Case 420: Verify successful login with valid credentials",
+      "state": "New",
+      "severity": "3 - Medium",
+      "priority": 2,
+      "type": "Bug"
+    }
+  ],
+  "children": [
+    {
+      "id": 141,
+      "type": "Task",
+      "title": "[QA Task] QA Test Design & Data Setup for Design and Implement Cookies consent with different options",
+      "state": "Active"
+    },
+    {
+      "id": 140,
+      "type": "Task",
+      "title": "[QA Task] QA Requirement Analysis for Design and Implement Cookies consent with different options",
+      "state": "Closed"
+    },
+    {
+      "id": 144,
+      "type": "Task",
+      "title": "[DEV Task] Code Development for Design and Implement Cookies consent with different options",
+      "state": "New"
+    },
+    {
+      "id": 142,
+      "type": "Task",
+      "title": "[QA Task] QA Test Execution for Design and Implement Cookies consent with different options",
+      "state": "New"
+    },
+    {
+      "id": 143,
+      "type": "Task",
+      "title": "[QA Automation Task] QA Automation for Design and Implement Cookies consent with different options",
+      "state": "New"
+    },
+    {
+      "id": 145,
+      "type": "Task",
+      "title": "[DEV Task] Unit Testing for Design and Implement Cookies consent with different options",
+      "state": "New"
+    }
+  ]
+}

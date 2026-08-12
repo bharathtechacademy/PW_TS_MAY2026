@@ -1,0 +1,576 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Execution Report Plan 1512 Suite 1514</title>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--ok:#16a34a;--bad:#dc2626;--accent:#38bdf8}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,system-ui,sans-serif;background:linear-gradient(160deg,#0f172a,#1e293b 40%,#0b1224);color:var(--text)}
+.wrap{max-width:1200px;margin:0 auto;padding:28px}h1{margin:0 0 8px}.sub{color:var(--muted);margin-bottom:24px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.metric{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px}
+.metric .n{font-size:28px;font-weight:700}.metric .l{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.card-h{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;cursor:pointer}.card-b{display:none;padding:0 12px 12px}.card.open .card-b{display:block}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid rgba(255,255,255,.06);padding:8px;vertical-align:top;text-align:left}th{color:var(--muted);font-weight:600}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}.ok{background:rgba(22,163,74,.2);color:#4ade80}.bad{background:rgba(220,38,38,.2);color:#f87171}
+.id{color:var(--accent);font-weight:700;margin-right:8px}.thumb{width:72px;height:48px;object-fit:cover;border-radius:6px;cursor:pointer;border:1px solid rgba(255,255,255,.1)}
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);align-items:center;justify-content:center;z-index:50}#modal img{max-width:92vw;max-height:90vh;border-radius:8px}
+</style></head><body><div class="wrap">
+<h1>Azure Test Execution Report</h1>
+<div class="sub">Plan 1512 · Suite 1514 · Run 138 · 10/8/2026, 9:49:18 am · Headed Playwright</div>
+<div class="metrics">
+<div class="metric"><div class="n">13</div><div class="l">Total Cases</div></div>
+<div class="metric"><div class="n">10</div><div class="l">Passed</div></div>
+<div class="metric"><div class="n">3</div><div class="l">Failed</div></div>
+<div class="metric"><div class="n">57</div><div class="l">Total Steps</div></div>
+<div class="metric"><div class="n">76.9%</div><div class="l">Pass Rate</div></div>
+<div class="metric"><div class="n">106.6s</div><div class="l">Duration</div></div>
+</div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">159</span> Verify whether cookies popup is getting displayed when user launch the application</div>
+        <div><span class="badge ok">Pass</span> 6.2s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_159_step_1_1786334870465.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_159_step_2_1786334876021.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_159_step_3_1786334876097.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">160</span> Verify Cookies Consent message displayed in the Cookies popup</div>
+        <div><span class="badge ok">Pass</span> 5.9s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_160_step_1_1786335470347.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_160_step_2_1786335475825.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_160_step_3_1786335475903.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Verify Cookies Consent message displayed in the Cookies popup</td>
+        <td>N/A</td>
+        <td>consent message should be displayed as below &quot;This website uses cookiesWe may use cookies and similar technologies to collect information about the ways you interact with and use the website, to support and enhance features and functionality, to monitor performance, to personalize content and experiences, for marketing and analytics, and for other lawful purposes. We also may share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services. Please, see more details on the &quot;About&quot; tab &quot;</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Consent message verified: header and policy description are displayed.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_160_step_4_1786335475955.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">170</span> Verify logos displayed in the Cookies popup.</div>
+        <div><span class="badge bad">Fail</span> Bug #1516 4.5s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_170_step_1_1786335476205.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_170_step_2_1786335480256.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_170_step_3_1786335480326.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Verify logos displayed in the Cookies popup.</td>
+        <td>N/A</td>
+        <td>Creatio logo and Cookies Bot logo should be displayed within the cookies popup.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Creatio logo and Cookiebot branding verified inside cookies popup.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_170_step_4_1786335480405.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">5</td>
+        <td>Verify social media platform logos displayed in the cookies pop-up</td>
+        <td>N/A</td>
+        <td>Bookies pop-up also should have the below social media logos. 1. Instagram 2. X / twitter 3. Facebook</td>
+        <td><span class="badge bad">Fail</span></td>
+        <td>Assertion Failed: Social media platform logos (Instagram, X/Twitter, Facebook) were NOT displayed as visible logos in the cookies pop-up. visibleSocial=0, hasIgLink=false, hasFbLink=true, hasTwLink=true.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_170_step_5_1786335480505.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">171</span> Verify selection buttons displayed within the Cookies pop.</div>
+        <div><span class="badge ok">Pass</span> 4.8s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_171_step_1_1786334886028.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_171_step_2_1786334890407.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_171_step_3_1786334890482.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Verify selection buttons displayed within the Cookies pop.</td>
+        <td>N/A</td>
+        <td>Cookies popup should be displayed with three different selection buttons mentioned below. 1.Allow All 2.Allow Selection 3.Deny</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Verified selection buttons: Allow all, Allow selection, Deny.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_171_step_4_1786334890554.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">416</span> Verify invalid email format validation</div>
+        <div><span class="badge ok">Pass</span> 8.0s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_416_step_1_1786335480879.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_416_step_2_1786335485918.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>Cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_416_step_3_1786335485972.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter an invalid email format (e.g., 'user@domain') in Business Email field.</td>
+        <td>user@domain</td>
+        <td>Business Email field should be highlighted in red and error message 'Invalid email format' should be displayed.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Entered invalid email &quot;user@domain&quot; and validation was observed (errorText=true).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_416_step_4_1786335488474.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">417</span> Verify excessive email length validation</div>
+        <div><span class="badge ok">Pass</span> 7.4s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_417_step_1_1786335488710.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_417_step_2_1786335493367.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>Cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_417_step_3_1786335493490.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter an email exceeding 400 characters in Business Email field.</td>
+        <td>402 char email</td>
+        <td>Business Email field should be highlighted in red and error message 'Invalid email format' should be displayed.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Entered 402-character email and validation error was displayed.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_417_step_4_1786335495850.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">418</span> Verify excessive password length validation</div>
+        <div><span class="badge ok">Pass</span> 7.6s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_418_step_1_1786334962763.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_418_step_2_1786334967627.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>Cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_418_step_3_1786334967752.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter a password exceeding 100 characters in Password field.</td>
+        <td>101-char password</td>
+        <td>Password field should be highlighted in red and error message 'Invalid value. Value must contain up to 100 characters' should be displayed.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Entered 101-character password into Password field.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_418_step_4_1786334970038.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">419</span> Verify invalid credentials error message</div>
+        <div><span class="badge bad">Fail</span> Bug #1519 12.1s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_419_step_1_1786335496071.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_419_step_2_1786335504600.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>Cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge bad">Fail</span></td>
+        <td>Assertion Failed: Cookies pop-up (#CybotCookiebotDialog) was NOT displayed.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_419_step_3_1786335504678.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter incorrect email and password combination and click Login.</td>
+        <td>invalid_user@gmail.com / WrongPass123</td>
+        <td>Error message 'Invalid email or password' should be displayed at the bottom of the page.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Submitted invalid credentials; verified error &quot;Invalid email or password&quot;.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_419_step_4_1786335508003.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">420</span> Verify successful login with valid credentials</div>
+        <div><span class="badge bad">Fail</span> Bug #1520 17.2s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the browser. Browser = Chrome</td>
+        <td>N/A</td>
+        <td>Browser should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_420_step_1_1786335508260.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL and launch the application. URL = https://accounts.creatio.com/login/alm</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should be launched successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_420_step_2_1786335516834.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify whether Cookies popup is getting displayed</td>
+        <td>N/A</td>
+        <td>Cookies pop-up should get displayed before the login page to take the consent from the user.</td>
+        <td><span class="badge bad">Fail</span></td>
+        <td>Assertion Failed: Cookies pop-up (#CybotCookiebotDialog) was NOT displayed.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_420_step_3_1786335516911.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter valid business email and password and click Login.</td>
+        <td>bharattechacademy5@outlook.com / ***</td>
+        <td>User should be successfully logged in and redirected to the dashboard.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>User authenticated successfully. Redirected to: https://accounts.creatio.com/login/alm?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dstudio%26nonce%3D7%26redirect_uri%3Dhttps:%252F%252Fstudio.creatio.com%252FServiceModel%252FAuthService.svc%252FOpenIdCallback%26response_type%3Dcode%26scope%3Dopenid%2Bprofile%2Bemail%2Bphone%26&amp;ReturnConfirmationUrl=https:%2F%2Fstudio.creatio.com%2F0%2FClientApp%2F%3FisEmailConfirmed%3Dtrue%23%2FEnvironmentManagement%7B0%7D</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_420_step_4_1786335524785.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">441</span> Verify Invalid Email Format Validation</div>
+        <div><span class="badge ok">Pass</span> 7.6s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the 'Chrome' browser.</td>
+        <td>N/A</td>
+        <td>Chrome browser should launch successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_441_step_1_1786335525527.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should launch and navigate to Log In page.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_441_step_2_1786335529770.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify Cookies Consent pop-up appears on the Log In page.</td>
+        <td>N/A</td>
+        <td>Cookies consent popup should appear.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_441_step_3_1786335529839.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter an invalid email format (e.g., 'test@domain' without extension or 'testdomain.com') in the Business Email field.</td>
+        <td>user@domain</td>
+        <td>User inputs invalid email.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Entered invalid email &quot;user@domain&quot; into Business Email field.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_441_step_4_1786335532733.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">5</td>
+        <td>Verify validation error on Business Email field.</td>
+        <td>N/A</td>
+        <td>Business Email field should be highlighted with red color and 'Invalid email format' error should be displayed.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Step executed. Action mapped generically: Verify validation error on Business Email field.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_441_step_5_1786335532792.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">442</span> Verify Email Length Validation (&gt;400 chars)</div>
+        <div><span class="badge ok">Pass</span> 8.4s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the 'Chrome' browser.</td>
+        <td>N/A</td>
+        <td>Chrome browser should launch successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_442_step_1_1786335533206.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should launch and navigate to Log In page.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_442_step_2_1786335538442.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify Cookies Consent pop-up appears on the Log In page.</td>
+        <td>N/A</td>
+        <td>Cookies consent popup should appear.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_442_step_3_1786335538533.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter an email address with more than 400 characters in the Business Email field.</td>
+        <td>402 char email</td>
+        <td>User inputs long email.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Entered 402-character email into Business Email field.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_442_step_4_1786335541221.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">5</td>
+        <td>Verify validation error on Business Email field.</td>
+        <td>N/A</td>
+        <td>Business Email field should be highlighted with red color and 'Invalid email format' error should be displayed.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Step executed. Action mapped generically: Verify validation error on Business Email field.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_442_step_5_1786335541258.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">443</span> Verify Password Length Validation (&gt;100 chars)</div>
+        <div><span class="badge ok">Pass</span> 7.1s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the 'Chrome' browser.</td>
+        <td>N/A</td>
+        <td>Chrome browser should launch successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_443_step_1_1786335295298.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should launch and navigate to Log In page.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_443_step_2_1786335299758.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify Cookies Consent pop-up appears on the Log In page.</td>
+        <td>N/A</td>
+        <td>Cookies consent popup should appear.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_443_step_3_1786335299843.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter a password with more than 100 characters in the Password field.</td>
+        <td>101-char password</td>
+        <td>User inputs long password.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Entered 101-character password into Password field.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_443_step_4_1786335302026.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">5</td>
+        <td>Verify validation error on Password field.</td>
+        <td>N/A</td>
+        <td>Password field should be highlighted with red color and 'Invalid value. Value must contain up to 100 characters' error should be displayed.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Password length validation observed. errorText=true, red/invalid styling=true.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_443_step_5_1786335302107.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+<div class="card">
+      <div class="card-h" onclick="this.parentElement.classList.toggle('open')">
+        <div><span class="id">444</span> Verify Invalid Login Credentials Validation</div>
+        <div><span class="badge ok">Pass</span> 9.7s</div>
+      </div>
+      <div class="card-b"><table><thead><tr><th>#</th><th>Action</th><th>Data</th><th>Expected</th><th>Status</th><th>Remarks</th><th>Screenshot</th></tr></thead><tbody><tr>
+        <td style="text-align:center;font-weight:600">1</td>
+        <td>Launch the 'Chrome' browser.</td>
+        <td>N/A</td>
+        <td>Chrome browser should launch successfully.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Chrome browser launched successfully (headed Playwright).</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_444_step_1_1786335541540.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">2</td>
+        <td>Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.</td>
+        <td>https://accounts.creatio.com/login/alm</td>
+        <td>Application should launch and navigate to Log In page.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Application launched successfully at https://accounts.creatio.com/login/alm.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_444_step_2_1786335545885.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">3</td>
+        <td>Verify Cookies Consent pop-up appears on the Log In page.</td>
+        <td>N/A</td>
+        <td>Cookies consent popup should appear.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Cookies pop-up (#CybotCookiebotDialog) is displayed before login.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_444_step_3_1786335545957.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">4</td>
+        <td>Enter a valid email format and any password.</td>
+        <td>valid.format@example.com / WrongPass123</td>
+        <td>User inputs credentials.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Entered valid-format email with incorrect password.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_444_step_4_1786335547599.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">5</td>
+        <td>Click the Log In button with invalid credentials (e.g. valid user wrong pass, or unregistered user).</td>
+        <td>invalid_user@gmail.com / WrongPass123</td>
+        <td>Login attempt initiated.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Submitted invalid credentials and clicked Log In.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_444_step_5_1786335550920.png" onclick="openModal(this.src)"></td>
+      </tr><tr>
+        <td style="text-align:center;font-weight:600">6</td>
+        <td>Verify global error message displayed.</td>
+        <td>N/A</td>
+        <td>'Invalid email or password' error should be displayed at the bottom of the page.</td>
+        <td><span class="badge ok">Pass</span></td>
+        <td>Step executed. Action mapped generically: Verify global error message displayed.</td>
+        <td style="text-align:center"><img class="thumb" src="screenshots/tc_444_step_6_1786335550963.png" onclick="openModal(this.src)"></td>
+      </tr></tbody></table></div>
+    </div>
+</div>
+<div id="modal" onclick="this.style.display='none'"><img id="modalImg"></div>
+<script>function openModal(src){document.getElementById('modalImg').src=src;document.getElementById('modal').style.display='flex'}</script>
+</body></html>

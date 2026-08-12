@@ -61,4 +61,42 @@ export class LoginPageSteps {
         await this.web.isElementVisible(loginPage.loginErrorMessage);
     }
 
+    //Method to enter business email and blur to trigger field validation
+    async enterBusinessEmail(email: string) {
+        await this.web.enterText(loginPage.businessEmailTextBox, email);
+        await this.web.blurElement(loginPage.businessEmailTextBox);
+    }
+
+    //Method to enter password and blur to trigger field validation
+    async enterPassword(password: string) {
+        await this.web.enterText(loginPage.passwordTextBox, password);
+        await this.web.blurElement(loginPage.passwordTextBox);
+    }
+
+    //Method to verify Business Email field is highlighted as invalid (red)
+    async verifyBusinessEmailFieldIsHighlightedInvalid() {
+        await this.web.isElementVisible(loginPage.businessEmailInvalidHighlight);
+        await this.web.isElementVisible(loginPage.businessEmailInvalidIcon);
+    }
+
+    //Method to verify Password field is highlighted as invalid (red)
+    async verifyPasswordFieldIsHighlightedInvalid() {
+        await this.web.isElementVisible(loginPage.passwordInvalidHighlight);
+        await this.web.isElementVisible(loginPage.passwordInvalidIcon);
+    }
+
+    //Method to verify Business Email validation error message
+    async verifyBusinessEmailValidationError(expectedError: string) {
+        const actualError: string | null = await this.web.getText(loginPage.businessEmailValidationError);
+        const normalized = (actualError || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        await this.web.verifyValueContains(normalized, expectedError);
+    }
+
+    //Method to verify Password validation error message
+    async verifyPasswordValidationError(expectedError: string) {
+        const actualError: string | null = await this.web.getText(loginPage.passwordValidationError);
+        const normalized = (actualError || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        await this.web.verifyValueContains(normalized, expectedError);
+    }
+
 }

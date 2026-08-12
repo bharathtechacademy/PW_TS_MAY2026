@@ -1,0 +1,101 @@
+[
+  {
+    "id": 441,
+    "type": "Test Case",
+    "title": "Verify Invalid Email Format Validation",
+    "state": "Design",
+    "areaPath": "Creatio CRM",
+    "assignedTo": "Bharath Tech Academy",
+    "stepsXml": "<steps id=\"0\" last=\"6\"><step id=\"2\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Launch the 'Chrome' browser.</parameterizedString><parameterizedString isformatted=\"true\">Chrome browser should launch successfully.</parameterizedString><description/></step><step id=\"3\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.</parameterizedString><parameterizedString isformatted=\"true\">Application should launch and navigate to Log In page.</parameterizedString><description/></step><step id=\"4\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Verify Cookies Consent pop-up appears on the Log In page.</parameterizedString><parameterizedString isformatted=\"true\">Cookies consent popup should appear.</parameterizedString><description/></step><step id=\"5\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Enter an invalid email format (e.g., 'test@domain' without extension or 'testdomain.com') in the Business Email field.</parameterizedString><parameterizedString isformatted=\"true\">User inputs invalid email.</parameterizedString><description/></step><step id=\"6\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Verify validation error on Business Email field.</parameterizedString><parameterizedString isformatted=\"true\">Business Email field should be highlighted with red color and 'Invalid email format' error should be displayed.</parameterizedString><description/></step></steps>",
+    "steps": [
+      {
+        "action": "Launch the 'Chrome' browser.",
+        "expected": "Chrome browser should launch successfully."
+      },
+      {
+        "action": "Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.",
+        "expected": "Application should launch and navigate to Log In page."
+      },
+      {
+        "action": "Verify Cookies Consent pop-up appears on the Log In page.",
+        "expected": "Cookies consent popup should appear."
+      },
+      {
+        "action": "Enter an invalid email format (e.g., 'test@domain' without extension or 'testdomain.com') in the Business Email field.",
+        "expected": "User inputs invalid email."
+      },
+      {
+        "action": "Verify validation error on Business Email field.",
+        "expected": "Business Email field should be highlighted with red color and 'Invalid email format' error should be displayed."
+      }
+    ],
+    "parameters": null,
+    "localDataSource": null
+  },
+  {
+    "id": 442,
+    "type": "Test Case",
+    "title": "Verify Email Length Validation (>400 chars)",
+    "state": "Design",
+    "areaPath": "Creatio CRM",
+    "assignedTo": "Bharath Tech Academy",
+    "stepsXml": "<steps id=\"0\" last=\"6\"><step id=\"2\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Launch the 'Chrome' browser.</parameterizedString><parameterizedString isformatted=\"true\">Chrome browser should launch successfully.</parameterizedString><description/></step><step id=\"3\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.</parameterizedString><parameterizedString isformatted=\"true\">Application should launch and navigate to Log In page.</parameterizedString><description/></step><step id=\"4\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Verify Cookies Consent pop-up appears on the Log In page.</parameterizedString><parameterizedString isformatted=\"true\">Cookies consent popup should appear.</parameterizedString><description/></step><step id=\"5\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Enter an email address with more than 400 characters in the Business Email field.</parameterizedString><parameterizedString isformatted=\"true\">User inputs long email.</parameterizedString><description/></step><step id=\"6\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Verify validation error on Business Email field.</parameterizedString><parameterizedString isformatted=\"true\">Business Email field should be highlighted with red color and 'Invalid email format' error should be displayed.</parameterizedString><description/></step></steps>",
+    "steps": [
+      {
+        "action": "Launch the 'Chrome' browser.",
+        "expected": "Chrome browser should launch successfully."
+      },
+      {
+        "action": "Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.",
+        "expected": "Application should launch and navigate to Log In page."
+      },
+      {
+        "action": "Verify Cookies Consent pop-up appears on the Log In page.",
+        "expected": "Cookies consent popup should appear."
+      },
+      {
+        "action": "Enter an email address with more than 400 characters in the Business Email field.",
+        "expected": "User inputs long email."
+      },
+      {
+        "action": "Verify validation error on Business Email field.",
+        "expected": "Business Email field should be highlighted with red color and 'Invalid email format' error should be displayed."
+      }
+    ],
+    "parameters": null,
+    "localDataSource": null
+  },
+  {
+    "id": 443,
+    "type": "Test Case",
+    "title": "Verify Password Length Validation (>100 chars)",
+    "state": "Design",
+    "areaPath": "Creatio CRM",
+    "assignedTo": "Bharath Tech Academy",
+    "stepsXml": "<steps id=\"0\" last=\"6\"><step id=\"2\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Launch the 'Chrome' browser.</parameterizedString><parameterizedString isformatted=\"true\">Chrome browser should launch successfully.</parameterizedString><description/></step><step id=\"3\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.</parameterizedString><parameterizedString isformatted=\"true\">Application should launch and navigate to Log In page.</parameterizedString><description/></step><step id=\"4\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Verify Cookies Consent pop-up appears on the Log In page.</parameterizedString><parameterizedString isformatted=\"true\">Cookies consent popup should appear.</parameterizedString><description/></step><step id=\"5\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Enter a password with more than 100 characters in the Password field.</parameterizedString><parameterizedString isformatted=\"true\">User inputs long password.</parameterizedString><description/></step><step id=\"6\" type=\"ValidateStep\"><parameterizedString isformatted=\"true\">Verify validation error on Password field.</parameterizedString><parameterizedString isformatted=\"true\">Password field should be highlighted with red color and 'Invalid value. Value must contain up to 100 characters' error should be displayed.</parameterizedString><description/></step></steps>",
+    "steps": [
+      {
+        "action": "Launch the 'Chrome' browser.",
+        "expected": "Chrome browser should launch successfully."
+      },
+      {
+        "action": "Enter URL 'https://accounts.creatio.com/login/alm' and launch the application.",
+        "expected": "Application should launch and navigate to Log In page."
+      },
+      {
+        "action": "Verify Cookies Consent pop-up appears on the Log In page.",
+        "expected": "Cookies consent popup should appear."
+      },
+      {
+        "action": "Enter a password with more than 100 characters in the Password field.",
+        "expected": "User inputs long password."
+      },
+      {
+        "action": "Verify validation error on Password field.",
+        "expected": "Password field should be highlighted with red color and 'Invalid value. Value must contain up to 100 characters' error should be displayed."
+      }
+    ],
+    "parameters": null,
+    "localDataSource": null
+  }
+]

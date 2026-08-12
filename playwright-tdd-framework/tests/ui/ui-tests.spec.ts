@@ -124,6 +124,45 @@ test.describe('Creatio CRM UI Tests', () => {
         await homePage.clickLogoutButton();
         await loginPage.verifyLoginPageIsDisplayed();
     });
+
+    // Azure TC #441: Verify Invalid Email Format Validation
+    test('Verify Invalid Email Format Validation', async ({ }, testInfo: TestInfo) => {
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchApplication();
+        await cookiesPage.verifyCookiesPopUpIsDisplayed();
+        await cookiesPage.clickOnSelectionButton('Allow All');
+        await cookiesPage.verifyCookiesPopUpIsDisappeared();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.enterBusinessEmail(testData["username"]);
+        await loginPage.verifyBusinessEmailFieldIsHighlightedInvalid();
+        await loginPage.verifyBusinessEmailValidationError(testData["expectedError"]);
+    });
+
+    // Azure TC #442: Verify Email Length Validation (>400 chars)
+    test('Verify Email Length Validation (>400 chars)', async ({ }, testInfo: TestInfo) => {
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchApplication();
+        await cookiesPage.verifyCookiesPopUpIsDisplayed();
+        await cookiesPage.clickOnSelectionButton('Allow All');
+        await cookiesPage.verifyCookiesPopUpIsDisappeared();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.enterBusinessEmail(testData["username"]);
+        await loginPage.verifyBusinessEmailFieldIsHighlightedInvalid();
+        await loginPage.verifyBusinessEmailValidationError(testData["expectedError"]);
+    });
+
+    // Azure TC #443: Verify Password Length Validation (>100 chars)
+    test('Verify Password Length Validation (>100 chars)', async ({ }, testInfo: TestInfo) => {
+        testData = data[testInfo.title as keyof typeof data];
+        await loginPage.launchApplication();
+        await cookiesPage.verifyCookiesPopUpIsDisplayed();
+        await cookiesPage.clickOnSelectionButton('Allow All');
+        await cookiesPage.verifyCookiesPopUpIsDisappeared();
+        await loginPage.verifyLoginPageIsDisplayed();
+        await loginPage.enterPassword(testData["password"]);
+        await loginPage.verifyPasswordFieldIsHighlightedInvalid();
+        await loginPage.verifyPasswordValidationError(testData["expectedError"]);
+    });
    
 
 });

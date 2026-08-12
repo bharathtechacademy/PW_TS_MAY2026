@@ -61,6 +61,12 @@ export class WebCommons {
         await element.fill(text);
     }
 
+    //Blur the target element (e.g. to trigger field-level validation).
+    async blurElement(locator: string) {
+        const element = await this.element(locator);
+        await element.blur();
+    }
+
     //Select an option from the drop-down. 
     async selectOption(locator: string, option: string) {
         const element = await this.element(locator);
