@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA Requirement Analysis - Azure DevOps Story 2</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg2: #111827;
+      --card: rgba(15, 23, 42, 0.82);
+      --card-2: rgba(17, 24, 39, 0.9);
+      --line: rgba(148, 163, 184, 0.22);
+      --text: #e5eefb;
+      --muted: #9fb1c8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --info: #a78bfa;
+      --shadow: 0 20px 60px rgba(2, 8, 23, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(167, 139, 250, 0.16), transparent 22%),
+        linear-gradient(135deg, #07111f 0%, #0f172a 42%, #111827 100%);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 32px 20px 56px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(34, 197, 94, 0.12) 42%, rgba(17, 24, 39, 0.95));
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.24), transparent 68%);
+      filter: blur(6px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #bfdbfe;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      max-width: 980px;
+      font-size: 15px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .metric, .panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(17, 24, 39, 0.92));
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric { padding: 16px; min-height: 92px; }
+    .metric .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .metric .value { margin-top: 10px; font-size: 18px; font-weight: 700; word-break: break-word; }
+    .metric .sub { margin-top: 4px; color: var(--muted); font-size: 12px; }
+
+    .row { display: grid; grid-template-columns: 1.45fr .95fr; gap: 18px; margin-top: 18px; }
+    .panel { padding: 22px; }
+    .panel h2 { margin: 0 0 14px; font-size: 20px; }
+    .panel p { margin: 0 0 10px; color: #d5e0ef; }
+    .panel ul { margin: 0; padding-left: 18px; color: #d5e0ef; }
+    .panel li { margin-bottom: 8px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .badge.blue { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border-color: rgba(56, 189, 248, 0.22); }
+    .badge.green { background: rgba(34, 197, 94, 0.15); color: #86efac; border-color: rgba(34, 197, 94, 0.22); }
+    .badge.yellow { background: rgba(245, 158, 11, 0.17); color: #fcd34d; border-color: rgba(245, 158, 11, 0.25); }
+    .badge.red { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border-color: rgba(239, 68, 68, 0.24); }
+    .badge.violet { background: rgba(167, 139, 250, 0.16); color: #c4b5fd; border-color: rgba(167, 139, 250, 0.24); }
+
+    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; }
+    thead th {
+      text-align: left;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #cbd5e1;
+      background: rgba(30, 41, 59, 0.95);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 12px;
+      vertical-align: top;
+    }
+    tbody td {
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+      vertical-align: top;
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.68);
+    }
+    tbody tr:nth-child(even) td { background: rgba(15, 23, 42, 0.84); }
+    tbody tr:hover td { background: rgba(56, 189, 248, 0.08); }
+
+    .stack { display: grid; gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .section-title h2 { margin: 0; }
+    .section-title .note { color: var(--muted); font-size: 13px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.75);
+      color: #dbeafe;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .meta-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .row, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 16px 12px 40px; }
+      .hero { padding: 20px; border-radius: 18px; }
+      .meta-grid { grid-template-columns: 1fr 1fr; }
+      table, thead, tbody, th, td, tr { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">QA Requirement Analysis</div>
+      <h1>Azure DevOps Story 2: Cookies Consent Options on Login Page</h1>
+      <p class="subtitle">Standalone requirement analysis for Azure DevOps user story 2. This report decomposes the story into testable requirements, maps acceptance criteria to QA scenarios, highlights risks and gaps, and gives an execution estimate for the login-page cookies consent behavior.</p>
+
+      <div class="meta-grid">
+        <div class="metric"><div class="label">Tracker</div><div class="value"><span class="badge blue">Azure DevOps</span></div><div class="sub">Source workspace configuration</div></div>
+        <div class="metric"><div class="label">Work Item ID</div><div class="value">2</div><div class="sub">User Story</div></div>
+        <div class="metric"><div class="label">Title</div><div class="value" style="font-size:15px;">Design and Implement Cookies consent with different options</div><div class="sub">Priority 2 | 3 story points</div></div>
+        <div class="metric"><div class="label">State</div><div class="value"><span class="badge yellow">New</span></div><div class="sub">Not yet implemented</div></div>
+        <div class="metric"><div class="label">Parent Epic</div><div class="value">1</div><div class="sub">User Login Experience</div></div>
+        <div class="metric"><div class="label">Confidence</div><div class="value"><span class="badge violet">0.72</span></div><div class="sub">Moderate</div></div>
+      </div>
+    </section>
+
+    <div class="row">
+      <section class="panel">
+        <div class="section-title"><h2>Executive Summary</h2><span class="note">Assessment snapshot</span></div>
+        <p>The story requires a cookies consent component to appear on the login page and expose multiple consent paths: Allow all, Allow selection, and Deny. The banner must include a consent message, a Show details link, and switch controls for Necessary, Preferences, Statistics, and Marketing, with Necessary disabled.</p>
+        <p>From a QA perspective, the highest-value checks are banner placement, control availability and state, text accuracy, close-on-action behavior, and the details expansion. The story is UI-centric with no explicit backend/API dependency, but consent persistence and accessibility rules are not fully defined and should be validated or clarified.</p>
+        <div class="chips" style="margin-top:14px;">
+          <span class="chip">UI / Login page</span>
+          <span class="chip">Consent controls</span>
+          <span class="chip">Accessibility</span>
+          <span class="chip">Responsive behavior</span>
+          <span class="chip">Browser compatibility</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title"><h2>User Story Details</h2><span class="note">Normalized fields</span></div>
+        <div class="stack">
+          <p><strong>Story:</strong> As a user, while login into the application I should get Cookies consent at the bottom of the login page with necessary details.</p>
+          <p><strong>Login page:</strong> https://accounts.creatio.com/login/alm</p>
+          <p><strong>Acceptance focus:</strong> consent popup below the login form, consent text, switch controls, Show details link, and dismissal after action.</p>
+          <p><strong>Source metadata:</strong> Azure DevOps project Creatio CRM, work item 2, parent epic 1.</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-top:18px;">
+      <div class="section-title"><h2>Requirement Breakdown</h2><span class="note">Testable interpretation of the story</span></div>
+      <div class="grid-2">
+        <div>
+          <h3 style="margin:0 0 10px;">Functional Requirements</h3>
+          <ul>
+            <li>Display a cookies consent banner when the login page loads.</li>
+            <li>Place the banner below the login form and keep it visible to the user.</li>
+            <li>Render the consent message text exactly as specified, including the long informational paragraph.</li>
+            <li>Show switch controls for Necessary, Preferences, Statistics, and Marketing.</li>
+            <li>Keep Necessary disabled while the other switches remain interactable.</li>
+            <li>Expose a Show details hyperlink that expands the consent panel or additional details area.</li>
+            <li>Provide Allow all, Allow selection, and Deny actions.</li>
+            <li>Close the popup after any action button is clicked.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin:0 0 10px;">Non-Functional Requirements</h3>
+          <ul>
+            <li>Banner should render without blocking login-page usability or causing layout breakage.</li>
+            <li>Text must remain readable on common desktop and mobile viewport sizes.</li>
+            <li>Keyboard navigation and focus order should remain usable for consent controls.</li>
+            <li>Consent behavior should be stable across Chromium, Firefox, and WebKit where supported.</li>
+            <li>Page load impact should remain low because the component is visible on the first screen.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top:18px;">
+        <div>
+          <h3 style="margin:0 0 10px;">Data and Validation Rules</h3>
+          <ul>
+            <li>The consent message text is part of the expected UI contract and must match the story content.</li>
+            <li>Necessary switch state is fixed as disabled.</li>
+            <li>Any user choice should be persisted or applied consistently, but persistence rules are not defined in the story.</li>
+            <li>The details panel should expand on Show details, but the exact content and layout are not fully specified.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin:0 0 10px;">Integration and UI Impact</h3>
+          <ul>
+            <li>Primary impact is on the login page UI and cookie-consent state handling.</li>
+            <li>No explicit external API or service dependency is described in the story.</li>
+            <li>Consent behavior may influence downstream analytics, marketing, or tracking integrations, which should be confirmed.</li>
+            <li>Accessibility and responsive design can affect the overall login experience and are part of regression scope.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:18px;">
+      <div class="section-title"><h2>QA Scenario Matrix</h2><span class="note">Acceptance criteria coverage</span></div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:72px;">ID</th>
+            <th>Scenario</th>
+            <th style="width:130px;">Type</th>
+            <th>Expected Result</th>
+            <th style="width:150px;">AC Mapping</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>S1</td><td>Open the login page and verify the cookies consent banner appears below the login form.</td><td><span class="badge green">Positive</span></td><td>Banner is visible at page load in the expected position.</td><td>Banner display</td></tr>
+          <tr><td>S2</td><td>Verify the consent message text is displayed exactly as specified.</td><td><span class="badge green">Positive</span></td><td>Displayed copy matches the story text and is readable.</td><td>Consent Message</td></tr>
+          <tr><td>S3</td><td>Check that Necessary is shown as disabled and cannot be toggled.</td><td><span class="badge blue">Control</span></td><td>Necessary remains disabled in all states.</td><td>Switch buttons</td></tr>
+          <tr><td>S4</td><td>Verify Preferences, Statistics, and Marketing switches are present and interactive.</td><td><span class="badge blue">Control</span></td><td>Switches render with the correct enabled state and labels.</td><td>Switch buttons</td></tr>
+          <tr><td>S5</td><td>Click Show details and validate that the consent details expand.</td><td><span class="badge violet">UI</span></td><td>Expanded details area is visible and related content is shown.</td><td>Hyperlink</td></tr>
+          <tr><td>S6</td><td>Click Allow all.</td><td><span class="badge green">Positive</span></td><td>Popup closes and the choice is applied.</td><td>Buttons</td></tr>
+          <tr><td>S7</td><td>Click Allow selection after selecting a subset of non-required switches.</td><td><span class="badge green">Positive</span></td><td>Popup closes and only selected categories are allowed.</td><td>Buttons</td></tr>
+          <tr><td>S8</td><td>Click Deny.</td><td><span class="badge green">Positive</span></td><td>Popup closes and consent is denied.</td><td>Buttons</td></tr>
+          <tr><td>S9</td><td>Reload the page after making a choice and observe whether the banner returns.</td><td><span class="badge yellow">Gap check</span></td><td>Behavior should be consistent, but persistence rules need confirmation.</td><td>Not explicit</td></tr>
+          <tr><td>S10</td><td>Use keyboard only to move through the banner and activate controls.</td><td><span class="badge violet">Accessibility</span></td><td>Focus order is logical and controls are operable from keyboard.</td><td>Not explicit</td></tr>
+          <tr><td>S11</td><td>Test the banner on a mobile viewport.</td><td><span class="badge violet">Responsive</span></td><td>Consent UI remains readable and does not overlap the login form.</td><td>Not explicit</td></tr>
+          <tr><td>S12</td><td>Validate behavior in Chromium, Firefox, and WebKit.</td><td><span class="badge violet">Cross-browser</span></td><td>Banner renders and buttons work consistently across supported browsers.</td><td>Not explicit</td></tr>
+          <tr><td>S13</td><td>Attempt to toggle Necessary through alternative interaction paths.</td><td><span class="badge red">Negative</span></td><td>State does not change and the control remains disabled.</td><td>Switch buttons</td></tr>
+          <tr><td>S14</td><td>Click action buttons while details are expanded.</td><td><span class="badge blue">State transition</span></td><td>Popup still closes correctly and no visual artifacts remain.</td><td>Hyperlink + Buttons</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="grid-2" style="margin-top:18px;">
+      <section class="panel">
+        <div class="section-title"><h2>Risks and Assumptions</h2><span class="note">Delivery considerations</span></div>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Severity</th>
+              <th>Probability</th>
+              <th>Impact</th>
+              <th>Mitigation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Consent persistence not defined</td><td><span class="badge red">High</span></td><td>Medium</td><td>User may see inconsistent banner behavior after refresh or revisit.</td><td>Confirm storage rule and expected duration before automation.</td></tr>
+            <tr><td>Exact details panel content missing</td><td><span class="badge yellow">Medium</span></td><td>Medium</td><td>Automation may fail if the expanded content changes unexpectedly.</td><td>Clarify the content contract or assert only the panel behavior.</td></tr>
+            <tr><td>Accessibility expectations unspecified</td><td><span class="badge yellow">Medium</span></td><td>High</td><td>Keyboard/focus issues may be missed until late regression.</td><td>Add keyboard and focus-order checks as a baseline QA gate.</td></tr>
+            <tr><td>Responsive layout not described</td><td><span class="badge yellow">Medium</span></td><td>Medium</td><td>Banner may overlap the login form on smaller screens.</td><td>Test common viewport sizes and capture screenshots.</td></tr>
+            <tr><td>Downstream tracking integration not scoped</td><td><span class="badge blue">Low</span></td><td>Medium</td><td>Consent state may not wire correctly to analytics or marketing tools.</td><td>Ask engineering whether consent signals are persisted or published.</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;">
+          <p><strong>Assumptions:</strong> The banner is part of the login page shell, the text copy is authoritative, and no special localization is required unless added later.</p>
+          <p><strong>Validation action for assumptions:</strong> Confirm expected persistence, details content, and accessibility requirements with the product owner or developer before automation.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title"><h2>Effort and Estimation</h2><span class="note">QA effort in hours</span></div>
+        <table>
+          <thead>
+            <tr>
+              <th>Activity</th>
+              <th>Best</th>
+              <th>Expected</th>
+              <th>Worst</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Test design and scenario mapping</td><td>1.0</td><td>1.5</td><td>2.0</td></tr>
+            <tr><td>Automation design and scripting</td><td>2.0</td><td>3.0</td><td>4.5</td></tr>
+            <tr><td>Test data and environment prep</td><td>0.5</td><td>1.0</td><td>1.5</td></tr>
+            <tr><td>Execution and defect triage</td><td>1.5</td><td>2.0</td><td>3.0</td></tr>
+            <tr><td>Regression confirmation</td><td>0.5</td><td>1.0</td><td>1.5</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;">
+          <p><strong>Total estimate:</strong> 5.5 to 12.5 hours, with an expected effort of about 8.5 hours.</p>
+          <p><strong>Confidence drivers:</strong> The work is mostly UI-driven and the acceptance criteria are mostly explicit. Confidence is reduced by the missing persistence rule and the unspecified details panel content.</p>
+          <p><strong>Confidence level:</strong> <span class="badge violet">Moderate</span></p>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-top:18px;">
+      <div class="section-title"><h2>Gaps and Recommendations</h2><span class="note">Practical next steps</span></div>
+      <div class="grid-2">
+        <div>
+          <h3 style="margin:0 0 10px;">Gaps</h3>
+          <ul>
+            <li>Consent persistence after refresh, revisit, or browser restart is not specified.</li>
+            <li>The exact content and structure of the Show details expansion are not fully defined.</li>
+            <li>Keyboard navigation, screen-reader labeling, and focus management are not described.</li>
+            <li>No explicit browser matrix or mobile breakpoint targets are provided.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin:0 0 10px;">Recommendations</h3>
+          <ul>
+            <li>Confirm consent persistence rules before implementation and automation.</li>
+            <li>Ask for a screenshot or markup contract for the expanded details state.</li>
+            <li>Add accessibility checks to the definition of done for the login page.</li>
+            <li>Execute at least one responsive and one cross-browser pass before sign-off.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      Generated on 2026-08-12 for Azure DevOps work item 2 in project Creatio CRM. Source URL: https://dev.azure.com/bharathtechacademy32/Creatio%20CRM
+    </div>
+  </div>
+</body>
+</html>

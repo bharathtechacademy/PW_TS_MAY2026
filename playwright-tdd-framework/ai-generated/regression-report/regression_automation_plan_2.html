@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Regression &amp; Automation Plan — US #2</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #dbe3ee;
+      --functional: #2563eb;
+      --regression: #7c3aed;
+      --yes: #059669;
+      --no: #d97706;
+      --na: #6b7280;
+      --accent: #0f172a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 220px);
+      line-height: 1.45;
+    }
+    header, main { max-width: 1280px; margin: 0 auto; padding: 24px; }
+    header {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+    }
+    h1 { margin: 0 0 8px; font-size: 1.75rem; color: var(--accent); }
+    .meta { color: var(--muted); font-size: 0.96rem; display: grid; gap: 4px; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .metric {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
+    }
+    .metric .label { color: var(--muted); font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .metric .value { font-size: 1.95rem; font-weight: 700; margin-top: 6px; color: var(--accent); }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
+    }
+    h2 { margin: 0 0 12px; font-size: 1.18rem; color: var(--accent); }
+    .section-note { color: var(--muted); font-size: 0.92rem; margin-top: -4px; margin-bottom: 12px; }
+    ul { margin: 0; padding-left: 18px; }
+    li + li { margin-top: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { border-bottom: 1px solid var(--border); padding: 10px 8px; text-align: left; vertical-align: top; }
+    th { background: #f8fafc; color: #334155; font-weight: 700; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      color: white;
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .badge-functional { background: var(--functional); }
+    .badge-regression { background: var(--regression); }
+    .badge-yes { background: var(--yes); }
+    .badge-no { background: var(--no); }
+    .badge-na { background: var(--na); }
+    .subgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .callout {
+      background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+      border: 1px solid #d9e4ff;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .empty-state {
+      padding: 14px 16px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      background: #fbfdff;
+    }
+    @media print {
+      body { background: #fff; }
+      header, section { box-shadow: none; }
+    }
+    @media (max-width: 780px) {
+      header, main { padding: 16px; }
+      table, th, td { font-size: 0.84rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Regression &amp; Automation Planning Report</h1>
+    <div class="meta">
+      <div><strong>User Story:</strong> #2 — Design and Implement Cookies consent with different options</div>
+      <div><strong>Area Path:</strong> Creatio CRM</div>
+      <div><strong>Source:</strong> Azure DevOps</div>
+      <div><strong>Generated:</strong> 2026-08-12T17:20:34.283Z</div>
+      <div><strong>Story State:</strong> Design</div>
+    </div>
+  </header>
+  <main>
+    <div class="metrics">
+      <div class="metric"><div class="label">Total Test Cases</div><div class="value">16</div></div>
+      <div class="metric"><div class="label">Functional</div><div class="value">4</div></div>
+      <div class="metric"><div class="label">Regression</div><div class="value">12</div></div>
+      <div class="metric"><div class="label">Automation Candidates (Yes)</div><div class="value">12</div></div>
+      <div class="metric"><div class="label">Manual Regression (No)</div><div class="value">0</div></div>
+    </div>
+
+    <section>
+      <h2>Planning Guidance</h2>
+      <ul>
+        <li>Prioritize the page-load banner, exact copy, and close-on-action flows in the regression pack because they are the highest-risk release checks.</li><li>Automate the stable UI contracts first: header text, body text, control presence, and consent button actions.</li><li>Keep viewport, keyboard, and cross-browser checks in the functional slice unless they become release blockers or are standardized across the product.</li><li>Treat the consent persistence refresh check as an exploratory follow-up until the story clarifies the expected retention rule.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Master Classification Table</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Test Case Title</th>
+            <th>Scenario Type</th>
+            <th>Suite Type</th>
+            <th>Automation Candidate</th>
+            <th>Automation Rationale</th>
+            <th>Priority Suggestion</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>1</td>
+            <td>Verify cookies consent popup is displayed below the login form on page load</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Deterministic page-load UI assertion with stable locators; high reuse for every release.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Verify whether the cookies consent popup header is &quot;This website uses cookies&quot;</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Simple text assertion on a stable header; ideal Playwright automation candidate.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Verify cookies consent body message content is displayed as per acceptance criteria</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Content contract check is deterministic and reusable across releases.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Verify Necessary cookie switch is displayed and disabled by default</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Toggle state and disabled attribute are reliably assertable in UI automation.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Verify Preferences, Statistics, and Marketing cookie switches are displayed and enabled for user selection</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Presence and interactivity of known toggles are stable and high-value regression checks.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Verify &quot;Show details&quot; hyperlink is displayed on the cookies consent popup</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Link visibility is a clear UI contract suitable for automated verification.</td>
+            <td>P2</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Verify clicking &quot;Show details&quot; expands the cookies consent details section</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Expand/collapse interaction is deterministic and useful in regression packs.</td>
+            <td>P2</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Verify &quot;Allow all&quot;, &quot;Allow selection&quot;, and &quot;Deny&quot; action buttons are displayed</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Button presence is a core UI contract and easy to automate.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Verify clicking &quot;Allow all&quot; closes the cookies consent popup</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Primary consent happy path is deterministic and critical for release regression.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Verify clicking &quot;Deny&quot; closes the cookies consent popup</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Critical consent-gate path; stable click-and-assert flow for Playwright.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Verify clicking &quot;Allow selection&quot; closes the cookies consent popup after optional category selection</td>
+            <td>Positive</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Core selective-consent workflow is repeatable with clear expected UI outcome.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Verify user cannot change the Necessary cookie switch state</td>
+            <td>Negative</td>
+            <td><span class="badge badge-regression">Regression</span></td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Disabled-control protection is assertable and protects a compliance-critical rule.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Verify cookies consent popup remains visible and aligned on a mobile viewport</td>
+            <td>Edge</td>
+            <td><span class="badge badge-functional">Functional</span></td>
+            <td><span class="badge badge-na">N/A</span></td>
+            <td>Responsive checks can need visual judgment and are exploratory for this story.</td>
+            <td>P3</td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td>Verify keyboard-only navigation and focus order across cookies consent controls</td>
+            <td>Edge</td>
+            <td><span class="badge badge-functional">Functional</span></td>
+            <td><span class="badge badge-na">N/A</span></td>
+            <td>Accessibility-focused exploration is useful but can require manual focus-order review.</td>
+            <td>P3</td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>Verify cookies consent popup does not break layout on different supported browsers</td>
+            <td>Edge</td>
+            <td><span class="badge badge-functional">Functional</span></td>
+            <td><span class="badge badge-na">N/A</span></td>
+            <td>Cross-browser visual consistency is valuable for exploration and may need manual inspection.</td>
+            <td>P3</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>Verify consent choice persists when the page is refreshed in the same session</td>
+            <td>Edge</td>
+            <td><span class="badge badge-functional">Functional</span></td>
+            <td><span class="badge badge-na">N/A</span></td>
+            <td>Persistence behavior is important but not fully defined in the story, so it is best treated as exploratory.</td>
+            <td>P2</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Functional Test Cases</h2>
+      <div class="section-note">Functional scenarios are exploratory or story-specific; automation candidacy is N/A.</div>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Test Case Title</th>
+            <th>Scenario Type</th>
+            <th>Priority</th>
+            <th>Automation Note</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>1</td>
+            <td>Verify cookies consent popup remains visible and aligned on a mobile viewport</td>
+            <td>Edge</td>
+            <td>P3</td>
+            <td>Automation candidacy is N/A for functional scenarios.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Verify keyboard-only navigation and focus order across cookies consent controls</td>
+            <td>Edge</td>
+            <td>P3</td>
+            <td>Automation candidacy is N/A for functional scenarios.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Verify cookies consent popup does not break layout on different supported browsers</td>
+            <td>Edge</td>
+            <td>P3</td>
+            <td>Automation candidacy is N/A for functional scenarios.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Verify consent choice persists when the page is refreshed in the same session</td>
+            <td>Edge</td>
+            <td>P2</td>
+            <td>Automation candidacy is N/A for functional scenarios.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Regression Test Cases</h2>
+      <div class="section-note">Regression scenarios are the reusable release checks that should remain in the standing pack.</div>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Test Case Title</th>
+            <th>Scenario Type</th>
+            <th>Automation Candidate</th>
+            <th>Automation Rationale</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>1</td>
+            <td>Verify cookies consent popup is displayed below the login form on page load</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Deterministic page-load UI assertion with stable locators; high reuse for every release.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Verify whether the cookies consent popup header is &quot;This website uses cookies&quot;</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Simple text assertion on a stable header; ideal Playwright automation candidate.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Verify cookies consent body message content is displayed as per acceptance criteria</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Content contract check is deterministic and reusable across releases.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Verify Necessary cookie switch is displayed and disabled by default</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Toggle state and disabled attribute are reliably assertable in UI automation.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Verify Preferences, Statistics, and Marketing cookie switches are displayed and enabled for user selection</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Presence and interactivity of known toggles are stable and high-value regression checks.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Verify &quot;Show details&quot; hyperlink is displayed on the cookies consent popup</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Link visibility is a clear UI contract suitable for automated verification.</td>
+            <td>P2</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Verify clicking &quot;Show details&quot; expands the cookies consent details section</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Expand/collapse interaction is deterministic and useful in regression packs.</td>
+            <td>P2</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Verify &quot;Allow all&quot;, &quot;Allow selection&quot;, and &quot;Deny&quot; action buttons are displayed</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Button presence is a core UI contract and easy to automate.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Verify clicking &quot;Allow all&quot; closes the cookies consent popup</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Primary consent happy path is deterministic and critical for release regression.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Verify clicking &quot;Deny&quot; closes the cookies consent popup</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Critical consent-gate path; stable click-and-assert flow for Playwright.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Verify clicking &quot;Allow selection&quot; closes the cookies consent popup after optional category selection</td>
+            <td>Positive</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Core selective-consent workflow is repeatable with clear expected UI outcome.</td>
+            <td>P1</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Verify user cannot change the Necessary cookie switch state</td>
+            <td>Negative</td>
+            <td><span class="badge badge-yes">Yes</span></td>
+            <td>Disabled-control protection is assertable and protects a compliance-critical rule.</td>
+            <td>P1</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Automation Backlog</h2>
+      <div class="section-note">Regression cases marked Yes are the first candidates to automate.</div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Test Case Title</th>
+            <th>Scenario Type</th>
+            <th>Priority</th>
+            <th>Automation Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>1</td>
+            <td>Verify cookies consent popup is displayed below the login form on page load</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Deterministic page-load UI assertion with stable locators; high reuse for every release.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Verify whether the cookies consent popup header is &quot;This website uses cookies&quot;</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Simple text assertion on a stable header; ideal Playwright automation candidate.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Verify cookies consent body message content is displayed as per acceptance criteria</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Content contract check is deterministic and reusable across releases.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Verify Necessary cookie switch is displayed and disabled by default</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Toggle state and disabled attribute are reliably assertable in UI automation.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Verify Preferences, Statistics, and Marketing cookie switches are displayed and enabled for user selection</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Presence and interactivity of known toggles are stable and high-value regression checks.</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Verify &quot;Show details&quot; hyperlink is displayed on the cookies consent popup</td>
+            <td>Positive</td>
+            <td>P2</td>
+            <td>Link visibility is a clear UI contract suitable for automated verification.</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Verify clicking &quot;Show details&quot; expands the cookies consent details section</td>
+            <td>Positive</td>
+            <td>P2</td>
+            <td>Expand/collapse interaction is deterministic and useful in regression packs.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Verify &quot;Allow all&quot;, &quot;Allow selection&quot;, and &quot;Deny&quot; action buttons are displayed</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Button presence is a core UI contract and easy to automate.</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Verify clicking &quot;Allow all&quot; closes the cookies consent popup</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Primary consent happy path is deterministic and critical for release regression.</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Verify clicking &quot;Deny&quot; closes the cookies consent popup</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Critical consent-gate path; stable click-and-assert flow for Playwright.</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Verify clicking &quot;Allow selection&quot; closes the cookies consent popup after optional category selection</td>
+            <td>Positive</td>
+            <td>P1</td>
+            <td>Core selective-consent workflow is repeatable with clear expected UI outcome.</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Verify user cannot change the Necessary cookie switch state</td>
+            <td>Negative</td>
+            <td>P1</td>
+            <td>Disabled-control protection is assertable and protects a compliance-critical rule.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Manual Regression Watchlist</h2>
+      <div class="section-note">Regression cases marked No stay on the manual watchlist.</div>
+      <div class="empty-state">No manual regression cases identified for this story.</div>
+    </section>
+  </main>
+</body>
+</html>
