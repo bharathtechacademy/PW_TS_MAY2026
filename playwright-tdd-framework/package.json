@@ -8,9 +8,11 @@
     "test:headed": "npx playwright test --headed",
     "test:debug": "npx playwright test --debug",
     "test:report": "npx playwright show-report",
-    "ui":"npx playwright test tests/ui/ui-tests.spec.ts --project=chromium  --headed",
-    "failed":"npx playwright test --last-failed  --headed",
-    "search:naukri": "npx tsx src/job-search/naukriJobScraper.ts"
+    "ui": "npx playwright test tests/ui/ui-tests.spec.ts --project=chromium  --headed",
+    "ui:azure": "node scripts/run-playwright-azure.js --suite=ui --planId=80 --suiteId=80 --azureSuiteName=\"Creatio CRM UI Tests\"",
+    "failed": "npx playwright test --last-failed  --headed",
+    "api": "npx playwright test tests/api/api-tests.spec.ts",
+    "load": "npx playwright test tests/load/load-tests.spec.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +24,7 @@
   },
   "dependencies": {
     "@types/pg": "^8.20.0",
+    "dotenv": "^17.4.2",
     "excel": "^1.0.1",
     "pdf-parse": "^2.4.5",
     "pdf-parse-new": "^2.1.0",

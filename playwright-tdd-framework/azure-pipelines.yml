@@ -1,0 +1,70 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: windows-latest
+
+parameters:
+  - name: TestSuite
+    displayName: 'Select the test suite to run using Playwright'
+    type: string
+    default: 'ui'
+    values:
+      - ui
+      - api
+      - load
+      - failed
+      - test
+      - test:headed
+
+  - name: TestPlanId
+    displayName: 'Azure DevOps Test Plan ID'
+    type: number
+    default: 162
+
+  - name: TestSuiteId
+    displayName: 'Azure DevOps Test Suite ID'
+    type: number
+    default: 1865
+
+  - name: TestSuiteName
+    displayName: 'Azure DevOps Test Suite Name'
+    type: string
+    default: 'Creatio CRM UI Tests'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '26.x'
+  displayName: 'Install Node.js'
+
+- script: npm install
+  displayName: 'Installing all the dependencies specified in the package.json file.'
+
+- script: npx playwright install chromium --with-deps
+  displayName: 'Installing Chromium browser engine to launch Chrome and Edge browsers '
+
+- script: |
+    echo "Running Playwright suite: ${{ parameters.TestSuite }}"
+    echo "Azure Test Plan ID: ${{ parameters.TestPlanId }}"
+    echo "Azure Test Suite ID: ${{ parameters.TestSuiteId }}"
+    echo "Azure Test Suite Name: ${{ parameters.TestSuiteName }}"
+    set AZURE_TEST_PLAN_ID=${{ parameters.TestPlanId }}
+    set AZURE_TEST_SUITE_ID=${{ parameters.TestSuiteId }}
+    set AZURE_TEST_SUITE_NAME=${{ parameters.TestSuiteName }}
+    set TEST_SUITE=${{ parameters.TestSuite }}
+    node scripts/run-playwright-azure.js --suite=${{ parameters.TestSuite }} --planId=${{ parameters.TestPlanId }} --suiteId=${{ parameters.TestSuiteId }} --azureSuiteName="${{ parameters.TestSuiteName }}"
+  displayName: 'Running test suite with Azure plan and suite parameters.'
+
+- task: PublishPipelineArtifact@1
+  condition: always()
+  inputs:
+    targetPath: '$(System.DefaultWorkingDirectory)/playwright-report'
+    artifact: 'playwright-test-results-report'
+    publishLocation: 'pipeline'
+  displayName: 'Execution completed successfully and publishing the test results. Check your email..!'

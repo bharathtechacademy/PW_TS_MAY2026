@@ -10,7 +10,7 @@
 3. **PostgreSQL** — `npm install pg @types/pg` to connect to a database and perform db validations
 4. **Excel** — `npm install excel xlsx` to read or work with spreadsheet data.
 5. **PDF** — `npm install pdf-parse` and (in this project) `pdf-parse-new` for PDF utilities.
- 
+
 ## 3. Update the global configurations at the project level within the package.json and typescript configuration.json files. 
  
  * package.json  => "type": "module"   //to import data from other files
